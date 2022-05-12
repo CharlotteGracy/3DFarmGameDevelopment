@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 
-public class ButtonChange : MonoBehaviour
+public class StartSceneButtonChange : MonoBehaviour
 {
 
     public GameObject SettingsUI;
