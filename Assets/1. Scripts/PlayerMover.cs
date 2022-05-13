@@ -47,6 +47,9 @@ public class PlayerMover : MonoBehaviour
         }
 
         moveVec = transform.right*moveH + transform.forward*moveV;
+        moveVec.y = moveY;
+
+
         characterController.Move(moveVec * moveSpeed * Time.deltaTime);
 
     }
