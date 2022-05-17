@@ -14,11 +14,15 @@ public class PlayerCamera : MonoBehaviour
     private float mouseX, mouseY;
 
     private void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
+
+       
     }
 
     private void Update() {
         Look();
+       
+
     }
 
     private void Look()
@@ -32,4 +36,12 @@ public class PlayerCamera : MonoBehaviour
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
     }
+
+
+
+
+
+
+
+
 }
