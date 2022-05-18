@@ -11,10 +11,18 @@ public class GameSceneButtonChange : MonoBehaviour
     public GameObject ExitUI;
     public GameObject toolText;
     public GameObject closeText;
+    public GameObject shovel;
+    public GameObject seed;
+    public GameObject wateringCan;
+
     private bool ToolUISwitchOn = false;
+    private bool ShovelSelectOn = false;
+    private bool SeedSelectOn = false;
+    private bool WateringCanSelectOn = false;
 
 
     public Button kitchenCloseButton, toolCloseButton, yesButton, noButton;
+    public Button shovelButton, seedButton, wateringCanButton;
 
 
     public void GoToBarn(){
@@ -30,8 +38,6 @@ public class GameSceneButtonChange : MonoBehaviour
     }
 
     public void ToolUIOn(){
-
-    
         ToolUI.SetActive(true);
         toolText.SetActive(false);
         closeText.SetActive(true);
@@ -59,11 +65,6 @@ public class GameSceneButtonChange : MonoBehaviour
     }
 
 
-
-
-
-
-
     public void ExitUIOn(){
         
         ExitUI.SetActive(true);
@@ -79,6 +80,57 @@ public class GameSceneButtonChange : MonoBehaviour
         Application.Quit();
         #endif
 
+    }
+
+    public void ShovelSwitch(){
+        if(ShovelSelectOn == false){
+            seed.SetActive(false);
+            wateringCan.SetActive(false);
+            shovel.SetActive(true);
+            ShovelSelectOn = true;
+            SeedSelectOn = false;            
+            WateringCanSelectOn = false;            
+
+        }
+        else if(ShovelSelectOn == true){
+            shovel.SetActive(false);
+            ShovelSelectOn = false;
+        }
+
+    }
+
+    public void SeedSwtich(){
+        if(SeedSelectOn == false){
+            shovel.SetActive(false);
+            wateringCan.SetActive(false);
+            seed.SetActive(true);
+            ShovelSelectOn = false;
+            SeedSelectOn = true;            
+            WateringCanSelectOn = false;            
+        }
+
+        else if(SeedSelectOn == true){
+            seed.SetActive(false);
+            SeedSelectOn = false;            
+        }
+    }
+
+    public void WateringCanSwtich(){
+        if(WateringCanSelectOn == false){
+
+            shovel.SetActive(false);
+            seed.SetActive(false);
+            wateringCan.SetActive(true);
+            ShovelSelectOn = false;
+            SeedSelectOn = false;            
+            WateringCanSelectOn = true;         
+        }
+
+
+        else if(WateringCanSelectOn == true){
+            wateringCan.SetActive(false);
+            WateringCanSelectOn = false;            
+        }       
     }
 
  
