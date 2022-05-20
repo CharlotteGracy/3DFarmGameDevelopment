@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
 
+    private GameSceneButtonChange shovelSwitch;
+
     public float moveSpeed = 10f;
     public float gravity = -9.81f;
     private Rigidbody rigid;
@@ -27,6 +29,7 @@ public class PlayerMover : MonoBehaviour
     private void Awake(){
 
         characterController = GetComponent<CharacterController>();
+        shovelSwitch = GameObject.Find("GameSceneButtonChange").GetComponent<GameSceneButtonChange>();
 
     }
 
@@ -72,8 +75,35 @@ public class PlayerMover : MonoBehaviour
         //TODO: 스페이스 바를 눌렀을 때 도구(삽, 곡괭이 등)를 휘두를 수 있도록 함
         if(Input.GetButtonDown("Jump")){
             Debug.Log("도구 휘두름");
+
+            if(/*shovelselecton이 true일 때*/){
+                UseShovel();
+
+            }
+            else if(/*seedselecton이 true일 때*/){
+                UseSeed();
+
+            }
+            else if(/*wateringcanselecton이 true일 때*/){
+                UseWateringCan();
+
+            }
         }
     }
+    
+    public void UseShovel(){
+
+
+    }
+
+    public void UseSeed(){
+
+    }
+
+    public void UseWateringCan(){
+
+    }
+
     
     
 }
