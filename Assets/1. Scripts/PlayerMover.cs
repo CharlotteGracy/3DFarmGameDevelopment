@@ -6,6 +6,7 @@ public class PlayerMover : MonoBehaviour
 {
 
     private GameSceneButtonChange shovelSwitch;
+    public LayerMask fieldLayer;
 
     public float moveSpeed = 10f;
     public float gravity = -9.81f;
@@ -24,20 +25,22 @@ public class PlayerMover : MonoBehaviour
 
     float mouseX;
     float mouseY;    
+    private bool fieldCheck;
+
 
     
     private void Awake(){
 
         characterController = GetComponent<CharacterController>();
-        shovelSwitch = GameObject.Find("GameSceneButtonChange").GetComponent<GameSceneButtonChange>();
+        shovelSwitch = GameObject.Find("GameManager").GetComponent<GameSceneButtonChange>();
 
     }
 
 
     private void Update(){
-     Move();
-     UseTool();
-     Rotate();
+        Move();
+        UseTool();
+        Rotate();
     }
 
     private void Move(){
@@ -63,6 +66,7 @@ public class PlayerMover : MonoBehaviour
         yRotation += mouseX;
         xRotation += mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
+
         /*
 
         if(characterController.isGrounded == false){
@@ -71,36 +75,69 @@ public class PlayerMover : MonoBehaviour
         */
     }
 
+
+
     private void UseTool(){
         //TODO: 스페이스 바를 눌렀을 때 도구(삽, 곡괭이 등)를 휘두를 수 있도록 함
         if(Input.GetButtonDown("Jump")){
-            Debug.Log("도구 휘두름");
 
-            if(/*shovelselecton이 true일 때*/){
+
+
+            LaserTest();
+
+            if(shovelSwitch.ShovelSelectOn == true){
                 UseShovel();
 
             }
-            else if(/*seedselecton이 true일 때*/){
+            else if(shovelSwitch.SeedSelectOn == true){
                 UseSeed();
 
             }
-            else if(/*wateringcanselecton이 true일 때*/){
+            else if(shovelSwitch.WateringCanSelectOn == true){
                 UseWateringCan();
 
             }
         }
     }
+
+    
     
     public void UseShovel(){
+
+        Debug.Log("삽 사용");
 
 
     }
 
     public void UseSeed(){
+        Debug.Log("씨앗 사용");
 
     }
 
     public void UseWateringCan(){
+        Debug.Log("물뿌리개 사용");
+
+    }
+
+
+    public void LaserTest(){
+
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        RaycastHit hitInfo;
+
+        if(Physics.Raycast(ray, out hitInfo, Mathf.Infinity, fieldLayer)){
+       //     Debug.Log(hitInfo.transform.gameObject.name);
+            Debug.Log("밭!");
+
+            fieldCheck = true;
+
+
+        }
+
+
+
+
+
 
     }
 

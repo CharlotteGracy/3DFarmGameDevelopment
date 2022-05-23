@@ -16,9 +16,9 @@ public class GameSceneButtonChange : MonoBehaviour
     public GameObject wateringCan;
 
     public bool ToolUISwitchOn = false;
-    public static bool ShovelSelectOn = false;
-    public static bool SeedSelectOn = false;
-    public static bool WateringCanSelectOn = false;
+    public bool ShovelSelectOn = false;
+    public bool SeedSelectOn = false;
+    public bool WateringCanSelectOn = false;
 
 
     public Button kitchenCloseButton, toolCloseButton, yesButton, noButton;
