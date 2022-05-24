@@ -25,8 +25,9 @@ public class PlayerMover : MonoBehaviour
 
     float mouseX;
     float mouseY;    
-    private bool fieldCheck;
 
+
+ 
 
     
     private void Awake(){
@@ -78,12 +79,20 @@ public class PlayerMover : MonoBehaviour
 
 
     private void UseTool(){
+
+        Vector3 destination = Camera.main.transform.forward;
+        destination.y = -0.7f;
+        Ray ray = new Ray(Camera.main.transform.position, destination);
+        RaycastHit hitInfo;
+
+        bool fieldCheck = Physics.Raycast(ray, out hitInfo, 1.3f, fieldLayer);
+
+        
         //TODO: 스페이스 바를 눌렀을 때 도구(삽, 곡괭이 등)를 휘두를 수 있도록 함
-        if(Input.GetButtonDown("Jump")){
+        if(Input.GetButtonDown("Jump") && fieldCheck == true){
 
 
 
-            LaserTest();
 
             if(shovelSwitch.ShovelSelectOn == true){
                 UseShovel();
@@ -103,6 +112,7 @@ public class PlayerMover : MonoBehaviour
     
     
     public void UseShovel(){
+        //TODO: 삽 움직이는 애니메이션, 땅의 Texture를 파인 땅 Texture로 바꿔주기
 
         Debug.Log("삽 사용");
 
@@ -117,29 +127,10 @@ public class PlayerMover : MonoBehaviour
     public void UseWateringCan(){
         Debug.Log("물뿌리개 사용");
 
-    }
-
-
-    public void LaserTest(){
-
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit hitInfo;
-
-        if(Physics.Raycast(ray, out hitInfo, Mathf.Infinity, fieldLayer)){
-       //     Debug.Log(hitInfo.transform.gameObject.name);
-            Debug.Log("밭!");
-
-            fieldCheck = true;
-
-
-        }
-
-
-
-
-
+        //TODO: Field의 Texture 변경
 
     }
+
 
     
     
