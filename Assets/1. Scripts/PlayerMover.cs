@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerMover : MonoBehaviour
 {
 
-    private GameSceneButtonChange shovelSwitch;
+    private GameSceneButtonChange toolSwitch;
+    private FieldAction fieldAction;
+
     public LayerMask fieldLayer;
 
     public float moveSpeed = 10f;
@@ -27,13 +29,15 @@ public class PlayerMover : MonoBehaviour
     float mouseY;    
 
 
+
  
 
     
     private void Awake(){
 
         characterController = GetComponent<CharacterController>();
-        shovelSwitch = GameObject.Find("GameManager").GetComponent<GameSceneButtonChange>();
+        toolSwitch = GameObject.Find("GameManager").GetComponent<GameSceneButtonChange>();
+        fieldAction = GameObject.Find("Field").GetComponent<FieldAction>();
 
     }
 
@@ -62,7 +66,7 @@ public class PlayerMover : MonoBehaviour
     }
     private void Rotate(){
         mouseX = Input.GetAxis("Mouse X")* horizontalSpeed;
-        mouseY = Input.GetAxis("Mouse Y")*verticalSpeed;
+        mouseY = Input.GetAxis("Mouse Y")* verticalSpeed;
 
         yRotation += mouseX;
         xRotation += mouseY;
@@ -84,25 +88,27 @@ public class PlayerMover : MonoBehaviour
         destination.y = -0.7f;
         Ray ray = new Ray(Camera.main.transform.position, destination);
         RaycastHit hitInfo;
+        //hitInfo로 어느 땅이 맞았는지 정보 가져오기
 
         bool fieldCheck = Physics.Raycast(ray, out hitInfo, 1.3f, fieldLayer);
+//        GameObject hitField = hitInfo.transform.gameObject;
 
-        
+
         //TODO: 스페이스 바를 눌렀을 때 도구(삽, 곡괭이 등)를 휘두를 수 있도록 함
         if(Input.GetButtonDown("Jump") && fieldCheck == true){
 
 
 
 
-            if(shovelSwitch.ShovelSelectOn == true){
+            if(toolSwitch.ShovelSelectOn == true){
                 UseShovel();
 
             }
-            else if(shovelSwitch.SeedSelectOn == true){
+            else if(toolSwitch.SeedSelectOn == true){
                 UseSeed();
 
             }
-            else if(shovelSwitch.WateringCanSelectOn == true){
+            else if(toolSwitch.WateringCanSelectOn == true){
                 UseWateringCan();
 
             }
@@ -114,18 +120,17 @@ public class PlayerMover : MonoBehaviour
     public void UseShovel(){
         //TODO: 삽 움직이는 애니메이션, 땅의 Texture를 파인 땅 Texture로 바꿔주기
 
-        Debug.Log("삽 사용");
-
-
+        //밭의 상태로는 FieldAction 함수 가져오기
+        fieldAction.ShovelUsed();
     }
 
     public void UseSeed(){
-        Debug.Log("씨앗 사용");
+        fieldAction.SeedUsed();
 
     }
 
     public void UseWateringCan(){
-        Debug.Log("물뿌리개 사용");
+        fieldAction.WateringCanUsed();
 
         //TODO: Field의 Texture 변경
 
