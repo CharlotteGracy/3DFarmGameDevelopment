@@ -1,42 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using System.Diagnostics;
+//using Debug = UnityEngine.Debug;
 
 
 
-/*
-public enum ToolType
-{
-    Shovel,
-    Seed,
-    WateringCan,
-
-}
-*/
 
 public class FieldAction : MonoBehaviour
 {
 
 
-    public Renderer rend;
+    public Renderer[] rend;
     
 
   //  private PlayerMover pm;
-    public GameObject DriedField;
     public Material driedField;
     public Material wetField;
     public GameObject seed;
 
-    public Texture dFieldTexture, wFieldTexture;
-
 
     private void Start()
     {
-    //    rend = GetComponent<Renderer>();
-      //  rend.enabled = true;
-
-      //  dFieldTexture = Resources.Load("PlowedGround_D.png") as Texture;
-      //  wFieldTexture = Resources.Load("PlowedGround_Wet.png") as Texture;
+      
     }
 
 
@@ -66,7 +52,7 @@ public class FieldAction : MonoBehaviour
 
 
     public void WateringCanUsed(){
-        Debug.Log("물뿌리개 사용");
+      Debug.Log("물뿌리개 사용");
 
       //  rend.material.EnableKeyword("");
 
@@ -75,7 +61,18 @@ public class FieldAction : MonoBehaviour
      // rend.material.SetTexture("PlowedGround_Wet_Mat", wFieldTexture);
 
       //TODO: 젖은 땅 material을 넣어줄 수 있도록 작성
-     // m = gameObject.GetComponent<Renderer>().material;
+//      gameObject.GetComponent<Renderer>().material = 
+
+      for(int i = 0; i < rend.Length; i++)
+      {
+        rend[i].material = wetField;
+      }
+
+    //  Stopwatch timeCount = new Stopwatch();
+    //  timeCount.Start();
+
+
+      Evaporated();
 
 
     }
@@ -83,33 +80,21 @@ public class FieldAction : MonoBehaviour
     //시간이 흐르면 땅이 마르는 함수
     public void Evaporated(){
 
+      StartCoroutine(KeepingWet());
+
+
+ 
+    }
+
+
+    IEnumerator KeepingWet(){
+      Debug.Log("젖었음");
+
+      yield return new WaitForSecondsRealtime(2f);
     }
 
 
 
-
-/*
-
-    private void ToolHit(ToolType toolType){
-      //  ToolType toolType;
-
-
-        if(toolType == ToolType.Shovel){
-
-        }
-        else if(toolType == ToolType.Seed){
-
-        }
-        
-
-        else if(toolType == ToolType.WateringCan){
-
-        }
-        
-
-    }
-
-    */
 
 
 //TODO: 플레이어가 스페이스 바를 눌렀을 때 그 행동에 상응하는 기능이 구현되도록

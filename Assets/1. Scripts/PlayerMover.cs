@@ -37,7 +37,7 @@ public class PlayerMover : MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
         toolSwitch = GameObject.Find("GameManager").GetComponent<GameSceneButtonChange>();
-        fieldAction = GameObject.Find("Field").GetComponent<FieldAction>();
+        //fieldAction = GameObject.Find("Field").GetComponent<FieldAction>();
 
     }
 
@@ -91,12 +91,11 @@ public class PlayerMover : MonoBehaviour
         //hitInfo로 어느 땅이 맞았는지 정보 가져오기
 
         bool fieldCheck = Physics.Raycast(ray, out hitInfo, 1.3f, fieldLayer);
-//        GameObject hitField = hitInfo.transform.gameObject;
-
-
+        
         //TODO: 스페이스 바를 눌렀을 때 도구(삽, 곡괭이 등)를 휘두를 수 있도록 함
         if(Input.GetButtonDown("Jump") && fieldCheck == true){
-
+          //  Debug.Log(hitInfo.transform.gameObject.name);
+            fieldAction = hitInfo.transform.gameObject.GetComponent<FieldAction>();
 
 
 
