@@ -6,11 +6,21 @@ using UnityEngine.UI;
 
 public class GameSceneButtonChange : MonoBehaviour
 {
+
+
+
+    [Header("UI")]
     public GameObject KitchenUI;
     public GameObject ToolUI;
     public GameObject ExitUI;
+    public GameObject StoreUI;
+
+    [Header("Text")]
     public GameObject toolText;
     public GameObject closeText;
+
+    [Header("Tools")]
+
     public GameObject shovel;
     public GameObject seed;
     public GameObject wateringCan;
@@ -19,10 +29,12 @@ public class GameSceneButtonChange : MonoBehaviour
     public bool ShovelSelectOn = false;
     public bool SeedSelectOn = false;
     public bool WateringCanSelectOn = false;
-
-
-    public Button kitchenCloseButton, toolCloseButton, yesButton, noButton;
     public Button shovelButton, seedButton, wateringCanButton;
+
+
+    [Header("Buttons")]
+
+    public Button kitchenCloseButton, storeCloseButton, toolCloseButton, yesButton, noButton;
 
 
     public void GoToBarn(){
@@ -62,6 +74,10 @@ public class GameSceneButtonChange : MonoBehaviour
         else if(ToolUISwitchOn == true){
             ToolUIOff();
         }
+    }
+    public void StoreUIOn(){
+        StoreUI.SetActive(true);
+        storeCloseButton.onClick.AddListener(()=>{StoreUI.SetActive(false);});
     }
 
 

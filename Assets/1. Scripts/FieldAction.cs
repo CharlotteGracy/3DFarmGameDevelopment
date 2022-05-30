@@ -12,8 +12,6 @@ public class FieldAction : MonoBehaviour
 
 
     public Renderer[] rend;
-    
-
   //  private PlayerMover pm;
     public Material driedField;
     public Material wetField;
@@ -45,52 +43,44 @@ public class FieldAction : MonoBehaviour
 
         //씨앗 Prefab을 각 Cube에 추가
 
-
-
     }
 
 
 
     public void WateringCanUsed(){
-      Debug.Log("물뿌리개 사용");
+      Debug.Log("물뿌리개 사용");  
+      StartCoroutine(KeepingWet());
 
-      //  rend.material.EnableKeyword("");
-
-
-      //rend.material.SetTexture("PlowedGround_Mat",dFieldTexture);
-     // rend.material.SetTexture("PlowedGround_Wet_Mat", wFieldTexture);
-
-      //TODO: 젖은 땅 material을 넣어줄 수 있도록 작성
-//      gameObject.GetComponent<Renderer>().material = 
-
-      for(int i = 0; i < rend.Length; i++)
-      {
-        rend[i].material = wetField;
-      }
-
-    //  Stopwatch timeCount = new Stopwatch();
-    //  timeCount.Start();
-
-
-      Evaporated();
-
+ 
 
     }
 
     //시간이 흐르면 땅이 마르는 함수
+    
+
+
     public void Evaporated(){
-
-      StartCoroutine(KeepingWet());
-
-
- 
+      for(int i = 0; i < rend.Length; i++)
+      {
+        rend[i].material = driedField;
+      }
     }
 
 
     IEnumerator KeepingWet(){
       Debug.Log("젖었음");
 
-      yield return new WaitForSecondsRealtime(2f);
+      for(int i = 0; i < rend.Length; i++)
+      {
+        rend[i].material = wetField;
+      }
+
+      yield return new WaitForSeconds(5f);
+
+      for(int i = 0; i < rend.Length; i++)
+      {
+        rend[i].material = driedField;
+      }      
     }
 
 
