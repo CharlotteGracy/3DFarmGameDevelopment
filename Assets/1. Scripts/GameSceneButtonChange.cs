@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameSceneButtonChange : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class GameSceneButtonChange : MonoBehaviour
     public GameObject ToolUI;
     public GameObject ExitUI;
     public GameObject StoreUI;
+    public GameObject SeedTypeUI;
 
     [Header("Text")]
     public GameObject toolText;
@@ -35,6 +37,11 @@ public class GameSceneButtonChange : MonoBehaviour
     [Header("Buttons")]
 
     public Button kitchenCloseButton, storeCloseButton, toolCloseButton, yesButton, noButton;
+
+
+
+
+
 
 
     public void GoToBarn(){
@@ -63,6 +70,7 @@ public class GameSceneButtonChange : MonoBehaviour
         closeText.SetActive(false);
         toolText.SetActive(true);
         ToolUISwitchOn = false;
+        SeedTypeUI.SetActive(false);
 
     }
 
@@ -99,6 +107,8 @@ public class GameSceneButtonChange : MonoBehaviour
     }
 
     public void ShovelSwitch(){
+        SeedTypeUI.SetActive(false);
+
         if(ShovelSelectOn == false){
             seed.SetActive(false);
             wateringCan.SetActive(false);
@@ -122,16 +132,23 @@ public class GameSceneButtonChange : MonoBehaviour
             seed.SetActive(true);
             ShovelSelectOn = false;
             SeedSelectOn = true;            
-            WateringCanSelectOn = false;            
+            WateringCanSelectOn = false;
+
+            //SeedTypeUIOn         
+            SeedTypeUI.SetActive(true); 
         }
 
         else if(SeedSelectOn == true){
             seed.SetActive(false);
-            SeedSelectOn = false;            
+            SeedSelectOn = false; 
+            SeedTypeUI.SetActive(false);           
         }
     }
 
     public void WateringCanSwtich(){
+        
+        SeedTypeUI.SetActive(false);
+
         if(WateringCanSelectOn == false){
 
             shovel.SetActive(false);
@@ -148,6 +165,8 @@ public class GameSceneButtonChange : MonoBehaviour
             WateringCanSelectOn = false;            
         }       
     }
+
+    
 
  
     

@@ -18,23 +18,11 @@ public class FieldAction : MonoBehaviour
     public GameObject seed;
 
 
-    private void Start()
-    {
-      
-    }
-
-
-    private void Awake()
-    {
-      //  pm = GameObject.Find("Player").GetComponent<PlayerMover>();
-       // toolSwitch = GameObject.Find("GameManager").GetComponent<GameSceneButtonChange>();
-
-    }
-
-
     public void ShovelUsed(){
 
         Debug.Log("삽 사용");
+
+        //씨앗 뿌리기 활성화
 
     }
 
@@ -49,25 +37,21 @@ public class FieldAction : MonoBehaviour
 
     public void WateringCanUsed(){
       Debug.Log("물뿌리개 사용");  
-      StartCoroutine(KeepingWet());
 
- 
+      //씨앗에 물 뿌리면 다음 단계로 진행
+
+      StartCoroutine(Evaporated());
+
 
     }
 
-    //시간이 흐르면 땅이 마르는 함수
     
 
 
-    public void Evaporated(){
-      for(int i = 0; i < rend.Length; i++)
-      {
-        rend[i].material = driedField;
-      }
-    }
+   
 
 
-    IEnumerator KeepingWet(){
+    IEnumerator Evaporated(){
       Debug.Log("젖었음");
 
       for(int i = 0; i < rend.Length; i++)
@@ -75,7 +59,7 @@ public class FieldAction : MonoBehaviour
         rend[i].material = wetField;
       }
 
-      yield return new WaitForSeconds(5f);
+      yield return new WaitForSecondsRealtime(5f);
 
       for(int i = 0; i < rend.Length; i++)
       {
