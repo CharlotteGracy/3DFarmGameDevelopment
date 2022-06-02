@@ -37,7 +37,6 @@ public class PlayerMover : MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
         toolSwitch = GameObject.Find("GameManager").GetComponent<GameSceneButtonChange>();
-        //fieldAction = GameObject.Find("Field").GetComponent<FieldAction>();
 
     }
 
@@ -96,8 +95,6 @@ public class PlayerMover : MonoBehaviour
         if(Input.GetButtonDown("Jump") && fieldCheck == true){
           //  Debug.Log(hitInfo.transform.gameObject.name);
             fieldAction = hitInfo.transform.gameObject.GetComponent<FieldAction>();
-
-
 
             if(toolSwitch.ShovelSelectOn == true){
                 UseShovel();

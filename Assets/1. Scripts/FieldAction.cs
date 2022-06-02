@@ -17,6 +17,20 @@ public class FieldAction : MonoBehaviour
     public Material wetField;
     public GameObject seed;
 
+    private Seeds seeds;
+
+    private bool seedPlanted;
+
+
+    private void Awake()
+    {
+      seeds = GetComponent<Seeds>();
+    }
+
+    
+
+
+
 
     public void ShovelUsed(){
 
@@ -27,9 +41,30 @@ public class FieldAction : MonoBehaviour
     }
 
     public void SeedUsed(){
+        Debug.Log(gameObject.name);
         Debug.Log("씨앗 사용");
 
         //씨앗 Prefab을 각 Cube에 추가
+
+        if(seedPlanted == true){
+          Debug.Log("Already Planted!");
+        }
+        else{
+          seeds.PlantedSeed();
+          seedPlanted = true;
+
+        }
+
+
+ 
+
+
+//TODO: groundWet은 수확 이후에 false로 해준다
+
+     
+
+
+
 
     }
 
@@ -39,8 +74,15 @@ public class FieldAction : MonoBehaviour
       Debug.Log("물뿌리개 사용");  
 
       //씨앗에 물 뿌리면 다음 단계로 진행
+      
+
 
       StartCoroutine(Evaporated());
+     
+     if(seedPlanted == true){
+        StartCoroutine(PlantGrow());
+      //  seedPlanted = false;
+     }
 
 
     }
@@ -59,12 +101,29 @@ public class FieldAction : MonoBehaviour
         rend[i].material = wetField;
       }
 
+
       yield return new WaitForSecondsRealtime(5f);
+
 
       for(int i = 0; i < rend.Length; i++)
       {
         rend[i].material = driedField;
-      }      
+      }
+
+      
+    }
+
+    
+
+    IEnumerator PlantGrow(){
+
+      yield return new WaitForSecondsRealtime(5f);
+      seeds.PlantLevel1();
+      yield return new WaitForSecondsRealtime(5f);
+      seeds.PlantLevel2();
+      yield return new WaitForSecondsRealtime(5f);
+      seeds.PlantLevel3();
+
     }
 
 

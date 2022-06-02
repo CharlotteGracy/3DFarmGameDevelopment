@@ -9,5 +9,6 @@ public class FinanceManager : MonoBehaviour
 
 
     public UnityAction OnChangeMoney;
-  
+
+    private int startMoney = 500;
 }
