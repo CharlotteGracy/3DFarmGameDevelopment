@@ -123,6 +123,15 @@ public class PlayerMover : MonoBehaviour
     public void UseSeed(){
         fieldAction.SeedUsed();
 
+        //TODO: 돈 차감
+        //1. 씨 뿌렸을 때 금액 차감
+        
+
+
+
+        //2. 작물 종류에 따라 금액 다르게 적용하기
+        //3. 금액이 부족할 때 버튼을 비활성화 하기
+
     }
 
     public void UseWateringCan(){
