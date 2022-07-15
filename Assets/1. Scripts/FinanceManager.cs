@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
-public class FinanceManager : MonoBehaviour
+public class FinanceManager : Singleton<FinanceManager>
 {
 
 
