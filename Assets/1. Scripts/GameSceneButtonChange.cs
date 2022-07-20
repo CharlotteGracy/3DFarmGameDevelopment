@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class GameSceneButtonChange : MonoBehaviour
+public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
 {
 
 
@@ -38,10 +38,10 @@ public class GameSceneButtonChange : MonoBehaviour
 
     public Button kitchenCloseButton, storeCloseButton, toolCloseButton, yesButton, noButton;
 
-
-
-
-
+   
+    private void Awake() {
+        _instance = this;
+    }
 
 
     public void GoToBarn(){
@@ -166,7 +166,8 @@ public class GameSceneButtonChange : MonoBehaviour
         }       
     }
 
-    
+
+
 
  
     

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using System.Diagnostics;
 //using Debug = UnityEngine.Debug;
+using UnityEngine.UI;
 
 
 
@@ -30,7 +31,15 @@ public class FieldAction : MonoBehaviour
    // private Seeds seeds;
 
     private bool seedPlanted;
+    private bool shovelUsed;
+    
+    public bool grownUp;
+
     public CropData cropData;
+
+    public Text harvestMessage;
+
+    
 
 
     private void Awake()
@@ -43,28 +52,38 @@ public class FieldAction : MonoBehaviour
 
         Debug.Log("삽 사용");
         //씨앗 뿌리기 활성화
+        shovelUsed = true;
+
+
+
     }
 
-    public void SeedChosen(){
-        cropData = SeedButtonManager.Instance.data;
-    }
-
+    
 
     public void SeedUsed(){
         Debug.Log(gameObject.name);
         Debug.Log("씨앗 사용");
         cropData = SeedButtonManager.Instance.data;
 
-        //씨앗 Prefab을 각 Cube에 추가
 
-        if(seedPlanted == true){
-          Debug.Log("Already Planted!");
+        if(cropData == null){
+          Debug.Log("씨앗이 선택되지 않았습니다!");
+
         }
         else{
-          PlantedSeed();
-          seedPlanted = true;
+          if(seedPlanted == true){
+              Debug.Log("Already Planted!");
+            }
+            else{
+              PlantedSeed();
+              seedPlanted = true;
 
+            }
         }
+
+        //씨앗 Prefab을 각 Cube에 추가
+
+ 
     }
 
 
@@ -174,7 +193,21 @@ public class FieldAction : MonoBehaviour
       yield return new WaitForSecondsRealtime(5f);
       PlantsOff();
       CropsOn(cropData);
-      
+      grownUp = true;
+    }
+
+    public void Harvested(){
+      Debug.Log("다 자란 작물을 수확합니다!");
+     // PlantsOff();
+      Carrots.SetActive(false);
+      Cabbages.SetActive(false);
+      cropData = null;
+      seedPlanted = false;
+      grownUp = false;
+    }
+
+    public void HarvestMessage(){
+      Debug.Log("Press SPACE To Harvest");
     }
 
 

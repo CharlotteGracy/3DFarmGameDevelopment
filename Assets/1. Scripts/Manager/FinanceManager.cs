@@ -14,7 +14,7 @@ public class FinanceManager : Singleton<FinanceManager>
 
     private int startMoney = 500;
 
-    
+   // public CropData cropData;
 
 
     public void NoMoney(){
@@ -22,6 +22,10 @@ public class FinanceManager : Singleton<FinanceManager>
         Debug.Log("금액이 부족합니다!");
 
     }
+
+    
+
+
 
 
 

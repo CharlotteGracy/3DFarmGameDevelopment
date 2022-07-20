@@ -71,12 +71,6 @@ public class PlayerMover : MonoBehaviour
         xRotation += mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
 
-        /*
-
-        if(characterController.isGrounded == false){
-
-        }
-        */
     }
 
 
@@ -95,28 +89,40 @@ public class PlayerMover : MonoBehaviour
         if(Input.GetButtonDown("Jump") && fieldCheck == true){
           //  Debug.Log(hitInfo.transform.gameObject.name);
             fieldAction = hitInfo.transform.gameObject.GetComponent<FieldAction>();
-
-            if(toolSwitch.ShovelSelectOn == true){
-                UseShovel();
+            if (fieldAction == null){
+                return;
+            }
+            //인식하는 땅의 작물이 모두 자란 상태일 때 수확한다
+            if(fieldAction.grownUp == true){
+                Harvest();
 
             }
-            else if(toolSwitch.SeedSelectOn == true){
-                
-                UseSeed();
+            else{
+
+                        
+                if(toolSwitch.ShovelSelectOn == true){
+                    UseShovel();
+
+                }
+                else if(toolSwitch.SeedSelectOn == true){
+                    
+                    UseSeed();
+
+                }
+                else if(toolSwitch.WateringCanSelectOn == true){
+                    UseWateringCan();
+
+                }
 
             }
-            else if(toolSwitch.WateringCanSelectOn == true){
-                UseWateringCan();
-
+            
             }
-        }
     }
 
     
     
     public void UseShovel(){
         //TODO: 삽 움직이는 애니메이션, 땅의 Texture를 파인 땅 Texture로 바꿔주기
-
         //밭의 상태로는 FieldAction 함수 가져오기
         fieldAction.ShovelUsed();
     }
@@ -126,10 +132,6 @@ public class PlayerMover : MonoBehaviour
 
         //TODO: 돈 차감, 당근인지 양배추인지 정보
         //1. 씨 뿌렸을 때 금액 차감
-        
-
-
-
         //2. 작물 종류에 따라 금액 다르게 적용하기
         //3. 금액이 부족할 때 버튼을 비활성화 하기
 
@@ -138,6 +140,13 @@ public class PlayerMover : MonoBehaviour
     public void UseWateringCan(){
         fieldAction.WateringCanUsed();
 
+
+    }
+
+
+    public void Harvest(){
+        //다 자란 작물을 수확한다
+        fieldAction.Harvested();
 
     }
 
