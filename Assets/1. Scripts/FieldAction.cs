@@ -60,9 +60,16 @@ public class FieldAction : MonoBehaviour
     
 
     public void SeedUsed(){
-        Debug.Log(gameObject.name);
+        //Debug.Log(gameObject.name);
         Debug.Log("씨앗 사용");
-        cropData = SeedButtonManager.Instance.data;
+
+        if(seedPlanted == true){
+          Debug.Log("Already Planted!");
+         
+        }
+        else{
+          cropData = SeedButtonManager.Instance.data;
+        }
 
 
         if(cropData == null){
@@ -71,13 +78,13 @@ public class FieldAction : MonoBehaviour
         }
         else{
           if(seedPlanted == true){
-              Debug.Log("Already Planted!");
-            }
-            else{
-              PlantedSeed();
-              seedPlanted = true;
-
-            }
+            Debug.Log("Already Planted!");
+          }
+          else{
+            PlantedSeed();
+            seedPlanted = true;
+          }
+             
         }
 
         //씨앗 Prefab을 각 Cube에 추가
