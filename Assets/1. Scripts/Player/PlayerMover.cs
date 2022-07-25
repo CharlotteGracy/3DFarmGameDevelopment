@@ -28,6 +28,8 @@ public class PlayerMover : MonoBehaviour
     float mouseX;
     float mouseY;    
 
+    public CropData data;
+
 
 
  
@@ -94,12 +96,13 @@ public class PlayerMover : MonoBehaviour
             }
             //인식하는 땅의 작물이 모두 자란 상태일 때 수확한다
             if(fieldAction.grownUp == true){
+
+                GetCropsInStorage();
                 Harvest();
 
             }
-            else{
 
-                        
+            else{   
                 if(toolSwitch.ShovelSelectOn == true){
                     UseShovel();
 
@@ -147,6 +150,15 @@ public class PlayerMover : MonoBehaviour
     public void Harvest(){
         //다 자란 작물을 수확한다
         fieldAction.Harvested();
+        
+    }
+
+    public void GetCropsInStorage(){
+        data = fieldAction.cropData;
+        Debug.Log(data.name);
+        StorageManager.Instance.AddNum(data);
+
+        
 
     }
 

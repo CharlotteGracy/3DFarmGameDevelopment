@@ -34,6 +34,7 @@ public class FieldAction : MonoBehaviour
     private bool shovelUsed;
     
     public bool grownUp;
+    public bool wet = false;
 
     public CropData cropData;
 
@@ -53,8 +54,6 @@ public class FieldAction : MonoBehaviour
         Debug.Log("삽 사용");
         //씨앗 뿌리기 활성화
         shovelUsed = true;
-
-
 
     }
 
@@ -91,18 +90,31 @@ public class FieldAction : MonoBehaviour
     public void WateringCanUsed(){
       Debug.Log("물뿌리개 사용");  
       //씨앗에 물 뿌리면 다음 단계로 진행
+
       StartCoroutine(Evaporated());
-     
-      if(seedPlanted == true){
+
+      
+      if(seedPlanted == true && wet == false){
+        wet = true;
         StartCoroutine(PlantGrow());
       }
 
+      
+     
+     
 
     }
+
+  IEnumerator Digged(){
+    yield return new WaitForSecondsRealtime(5f);
+  }
+
+
 
 
     IEnumerator Evaporated(){
       Debug.Log("젖었음");
+     
 
       for(int i = 0; i < rend.Length; i++)
       {
@@ -135,7 +147,6 @@ public class FieldAction : MonoBehaviour
         PlantLevel1Group.SetActive(true);
         PlantLevel2Group.SetActive(false);
         PlantLevel3Group.SetActive(false);
-
     }
 
     public void PlantLevel2(){
@@ -178,8 +189,20 @@ public class FieldAction : MonoBehaviour
             Cabbages.SetActive(true);
             break;
         }
+    }
 
+    public void CropsOff(CropData cropData){
+      switch(cropData.cropType){
+        case CropType.CARROT:
+        PlantsOff();
+        Carrots.SetActive(false);
+        break;
 
+        case CropType.CABBAGE:
+        PlantsOff();
+        Cabbages.SetActive(false);
+        break;
+      }
     }
 
     IEnumerator PlantGrow(){
@@ -199,11 +222,13 @@ public class FieldAction : MonoBehaviour
     public void Harvested(){
       Debug.Log("다 자란 작물을 수확합니다!");
      // PlantsOff();
-      Carrots.SetActive(false);
-      Cabbages.SetActive(false);
+      CropsOff(cropData);
       cropData = null;
       seedPlanted = false;
       grownUp = false;
+      wet = false;
+
+
     }
 
     public void HarvestMessage(){

@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class StorageManager : Singleton<StorageManager>
+{
+
+    public List<CropData> cropList = new List<CropData>();
+    private StorageSlotUI storageSlotUI;
+    public int maxCount = 9;
+
+
+    private void Awake() {
+        _instance = this;
+    }
+
+
+    public bool AddNum(CropData data){
+        if(cropList.Count >= maxCount){
+            return false;
+        }
+        else{
+            cropList.Add(data); 
+            //storageSlotUI.UpdateUI();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            storageSlotUI.UpdateUI();
+            return true;
+        }
+    }
+
+    public void RemoveNum(CropData data){ 
+        cropList.Remove(data);
+       // storageSlotUI.UpdateUI();
+    }
+
+
+}

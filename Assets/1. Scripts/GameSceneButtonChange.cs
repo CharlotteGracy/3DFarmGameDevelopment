@@ -16,6 +16,7 @@ public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
     public GameObject ExitUI;
     public GameObject StoreUI;
     public GameObject SeedTypeUI;
+    public GameObject StorageUI;
 
     [Header("Text")]
     public GameObject toolText;
@@ -31,12 +32,14 @@ public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
     public bool ShovelSelectOn = false;
     public bool SeedSelectOn = false;
     public bool WateringCanSelectOn = false;
+    public bool StorageUIOnOff = false;
     public Button shovelButton, seedButton, wateringCanButton;
 
 
     [Header("Buttons")]
 
     public Button kitchenCloseButton, storeCloseButton, toolCloseButton, yesButton, noButton;
+    public Button storageButton;
 
    
     private void Awake() {
@@ -86,6 +89,18 @@ public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
     public void StoreUIOn(){
         StoreUI.SetActive(true);
         storeCloseButton.onClick.AddListener(()=>{StoreUI.SetActive(false);});
+    }
+
+    public void StorageUIOn(){
+        if(StorageUIOnOff == false){
+            StorageUI.SetActive(true);
+            StorageUIOnOff = true;
+        }
+        else if(StorageUIOnOff == true){
+            StorageUI.SetActive(false);
+            StorageUIOnOff = false;
+        }
+
     }
 
 
