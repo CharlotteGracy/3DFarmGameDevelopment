@@ -65,12 +65,10 @@ public class FieldAction : MonoBehaviour
 
         if(seedPlanted == true){
           Debug.Log("Already Planted!");
-         
         }
         else{
           cropData = SeedButtonManager.Instance.data;
         }
-
 
         if(cropData == null){
           Debug.Log("씨앗이 선택되지 않았습니다!");
@@ -162,7 +160,6 @@ public class FieldAction : MonoBehaviour
         PlantLevel1Group.SetActive(false);
         PlantLevel2Group.SetActive(true);
         PlantLevel3Group.SetActive(false);
-
     }
     public void PlantLevel3(){
 
@@ -170,7 +167,6 @@ public class FieldAction : MonoBehaviour
         PlantLevel1Group.SetActive(false);
         PlantLevel2Group.SetActive(false);
         PlantLevel3Group.SetActive(true);
-
     }
 
     public void PlantsOff(){
@@ -234,8 +230,6 @@ public class FieldAction : MonoBehaviour
       seedPlanted = false;
       grownUp = false;
       wet = false;
-
-
     }
 
     public void HarvestMessage(){

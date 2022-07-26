@@ -6,7 +6,7 @@ public class StorageManager : Singleton<StorageManager>
 {
 
     public List<CropData> cropList = new List<CropData>();
-    private StorageSlotUI storageSlotUI;
+    public StorageSlotUI storageSlotUI;
     public int maxCount = 9;
 
 
@@ -21,14 +21,14 @@ public class StorageManager : Singleton<StorageManager>
         }
         else{
             cropList.Add(data); 
-            //storageSlotUI.UpdateUI();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            storageSlotUI.UpdateUI();
+            storageSlotUI.UpdateUI();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            storageSlotUI.UpdateUI();
             return true;
         }
     }
 
     public void RemoveNum(CropData data){ 
         cropList.Remove(data);
-       // storageSlotUI.UpdateUI();
+        storageSlotUI.UpdateUI();
     }
 
 
