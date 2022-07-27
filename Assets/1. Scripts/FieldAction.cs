@@ -23,15 +23,16 @@ public class FieldAction : MonoBehaviour
     public GameObject Cabbages;
 
     public Renderer[] rend;
-  //  private PlayerMover pm;
+
     public Material driedField;
     public Material wetField;
+    public Material diggedField;
     public GameObject seed;
 
-   // private Seeds seeds;
+  
 
     private bool seedPlanted;
-    private bool shovelUsed;
+    public bool shovelUsed;
     
     public bool grownUp;
     public bool wet = false;
@@ -53,6 +54,7 @@ public class FieldAction : MonoBehaviour
 
         Debug.Log("삽 사용");
         //씨앗 뿌리기 활성화
+        StartCoroutine(Digged());
         shovelUsed = true;
 
     }
@@ -62,16 +64,8 @@ public class FieldAction : MonoBehaviour
     public void SeedUsed(){
         //Debug.Log(gameObject.name);
         Debug.Log("씨앗 사용");
-
-        if(seedPlanted == true){
-          Debug.Log("Already Planted!");
-        }
-        else{
-          cropData = SeedButtonManager.Instance.data;
-        }
-
-        if(cropData == null){
-          Debug.Log("씨앗이 선택되지 않았습니다!");
+        if(shovelUsed == false){
+          Debug.Log("Didn't ready for seeds!");
 
         }
         else{
@@ -79,10 +73,23 @@ public class FieldAction : MonoBehaviour
             Debug.Log("Already Planted!");
           }
           else{
-            PlantedSeed();
-            seedPlanted = true;
+            cropData = SeedButtonManager.Instance.data;
           }
-             
+
+          if(cropData == null){
+            Debug.Log("씨앗이 선택되지 않았습니다!");
+
+          }
+          else{
+            if(seedPlanted == true){
+              Debug.Log("Already Planted!");
+            }
+            else{
+              PlantedSeed();
+              seedPlanted = true;
+              StartCoroutine(NormalField());
+            }
+          }
         }
 
         //씨앗 Prefab을 각 Cube에 추가
@@ -111,7 +118,19 @@ public class FieldAction : MonoBehaviour
     }
 
   IEnumerator Digged(){
+    Debug.Log("땅이 파입니다!");
+    for(int i = 0; i < rend.Length; i++){
+      rend[i].material = diggedField;
+    }
+
     yield return new WaitForSecondsRealtime(5f);
+  }
+  IEnumerator NormalField(){
+
+    yield return null;
+    for(int i = 0; i < rend.Length; i++){
+      rend[i].material = driedField;
+    }
   }
 
 
@@ -230,6 +249,7 @@ public class FieldAction : MonoBehaviour
       seedPlanted = false;
       grownUp = false;
       wet = false;
+      shovelUsed = false;
     }
 
     public void HarvestMessage(){
