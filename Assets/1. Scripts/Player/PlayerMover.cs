@@ -10,7 +10,7 @@ public class PlayerMover : MonoBehaviour
 
     public LayerMask fieldLayer;
 
-    public float moveSpeed = 10f;
+    public float moveSpeed = 5f;
     public float gravity = -9.81f;
     private Rigidbody rigid;
     
@@ -28,7 +28,7 @@ public class PlayerMover : MonoBehaviour
     float mouseX;
     float mouseY;    
 
-    public CropData data;
+    private CropData data;
 
 
 
