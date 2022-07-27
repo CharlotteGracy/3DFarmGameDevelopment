@@ -24,12 +24,17 @@ public class FieldAction : MonoBehaviour
 
     public Renderer[] rend;
 
+    [Header("Material")]
+
     public Material driedField;
     public Material wetField;
     public Material diggedField;
     public GameObject seed;
 
-  
+    [Header("MessageText")] 
+    public Message messageText;
+
+
 
     private bool seedPlanted;
     public bool shovelUsed;
@@ -66,11 +71,13 @@ public class FieldAction : MonoBehaviour
         Debug.Log("씨앗 사용");
         if(shovelUsed == false){
           Debug.Log("Didn't ready for seeds!");
+          messageText.NoShovelUsed();
 
         }
         else{
           if(seedPlanted == true){
             Debug.Log("Already Planted!");
+            messageText.AlreadyPlanted();
           }
           else{
             cropData = SeedButtonManager.Instance.data;
@@ -78,11 +85,13 @@ public class FieldAction : MonoBehaviour
 
           if(cropData == null){
             Debug.Log("씨앗이 선택되지 않았습니다!");
+            messageText.NoSeedSelected();
 
           }
           else{
             if(seedPlanted == true){
               Debug.Log("Already Planted!");
+              messageText.AlreadyPlanted();
             }
             else{
               PlantedSeed();
@@ -243,6 +252,7 @@ public class FieldAction : MonoBehaviour
 
     public void Harvested(){
       Debug.Log("다 자란 작물을 수확합니다!");
+      messageText.CropHarvested();
      // PlantsOff();
       CropsOff(cropData);
       cropData = null;
