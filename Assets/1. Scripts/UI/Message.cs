@@ -7,7 +7,7 @@ using TMPro;
 public class Message : MonoBehaviour
 {
     public TMP_Text notice;
-    //public TMP_Text noSeedChosen;
+    
     TextMeshProUGUI mText;
 
     private void Awake() {
@@ -15,7 +15,6 @@ public class Message : MonoBehaviour
     }
 
     public void NoSeedSelected(){
-        //gameObject.SetActive(true);
         mText.enabled = true;
         notice.text = "No Seeds Selected!";
         StartCoroutine(MessageTwinkle());

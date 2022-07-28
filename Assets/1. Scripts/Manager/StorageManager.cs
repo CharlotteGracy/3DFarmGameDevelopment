@@ -8,6 +8,7 @@ public class StorageManager : Singleton<StorageManager>
     public List<CropData> cropList = new List<CropData>();
     public StorageSlotUI storageSlotUI;
     public int maxCount = 9;
+    public Message messageText;
 
 
     private void Awake() {
@@ -17,6 +18,7 @@ public class StorageManager : Singleton<StorageManager>
 
     public bool AddNum(CropData data){
         if(cropList.Count >= maxCount){
+            messageText.FullStorage();
             return false;
         }
         else{

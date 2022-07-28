@@ -51,7 +51,7 @@ public class FieldAction : MonoBehaviour
 
     private void Awake()
     {
-     // seeds = GetComponent<Seeds>();
+     
     }
 
     
@@ -251,15 +251,15 @@ public class FieldAction : MonoBehaviour
     }
 
     public void Harvested(){
-      Debug.Log("다 자란 작물을 수확합니다!");
+      
       messageText.CropHarvested();
-     // PlantsOff();
       CropsOff(cropData);
       cropData = null;
       seedPlanted = false;
       grownUp = false;
       wet = false;
       shovelUsed = false;
+      
     }
 
     public void HarvestMessage(){

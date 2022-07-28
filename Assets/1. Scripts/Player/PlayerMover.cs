@@ -29,6 +29,7 @@ public class PlayerMover : MonoBehaviour
     float mouseY;    
 
     private CropData data;
+    private bool storageSpace;
 
 
 
@@ -39,7 +40,6 @@ public class PlayerMover : MonoBehaviour
 
         characterController = GetComponent<CharacterController>();
         toolSwitch = GameObject.Find("GameManager").GetComponent<GameSceneButtonChange>();
-
     }
 
 
@@ -54,8 +54,7 @@ public class PlayerMover : MonoBehaviour
         moveV = Input.GetAxis("Vertical");
 
         if(characterController.isGrounded == false){
- 			moveY += gravity * Time.deltaTime;
-           
+ 			moveY += gravity * Time.deltaTime;       
         }
 
         moveVec = transform.right*moveH + transform.forward*moveV;
@@ -72,7 +71,6 @@ public class PlayerMover : MonoBehaviour
         yRotation += mouseX;
         xRotation += mouseY;
         xRotation = Mathf.Clamp(xRotation, -90, 90);
-
     }
 
 
@@ -98,7 +96,7 @@ public class PlayerMover : MonoBehaviour
             if(fieldAction.grownUp == true){
 
                 GetCropsInStorage();
-                Harvest();
+                //Harvest();
 
             }
 
@@ -149,14 +147,20 @@ public class PlayerMover : MonoBehaviour
 
     public void Harvest(){
         //다 자란 작물을 수확한다
-        fieldAction.Harvested();
+          fieldAction.Harvested();
+        
         
     }
 
     public void GetCropsInStorage(){
         data = fieldAction.cropData;
         Debug.Log(data.name);
-        StorageManager.Instance.AddNum(data);
+      //  StorageManager.Instance.AddNum(data);
+        if(StorageManager.Instance.AddNum(data) == false){
+        }
+        else{
+         Harvest();
+        }
 
         
 
