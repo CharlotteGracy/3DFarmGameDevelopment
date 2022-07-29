@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 
-public enum CropType{CARROT, CABBAGE, WATERMELON, PUMPKIN, APPLE, ORANGE, COCONUT, SUNFLOWER,};
+public enum CropType{CARROT, CABBAGE, WATERMELON, PUMPKIN, SUNFLOWER, WHEAT,};
 
 [CreateAssetMenu(fileName = "CropData", menuName = "Crop/CropData")]
 

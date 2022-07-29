@@ -21,6 +21,10 @@ public class FieldAction : MonoBehaviour
     [Header("Crops")]
     public GameObject Carrots;
     public GameObject Cabbages;
+    public GameObject Watermelons;
+    public GameObject Pumpkins;
+    public GameObject Sunflowers;
+    public GameObject Wheats;
 
     public Renderer[] rend;
 
@@ -219,6 +223,24 @@ public class FieldAction : MonoBehaviour
             case CropType.CABBAGE:
             Cabbages.SetActive(true);
             break;
+
+            case CropType.WATERMELON:
+            Watermelons.SetActive(true);
+            break;
+
+            case CropType.PUMPKIN:
+            Pumpkins.SetActive(true);
+            break;
+
+            case CropType.SUNFLOWER:
+            Sunflowers.SetActive(true);
+            break;
+
+            case CropType.WHEAT:
+            Wheats.SetActive(true);
+            break;
+
+
         }
     }
 
@@ -233,6 +255,28 @@ public class FieldAction : MonoBehaviour
         PlantsOff();
         Cabbages.SetActive(false);
         break;
+
+        case CropType.WATERMELON:
+        PlantsOff();
+        Watermelons.SetActive(false);
+        break;
+
+        case CropType.PUMPKIN:
+        PlantsOff();
+        Pumpkins.SetActive(false);
+        break;
+
+        case CropType.SUNFLOWER:
+        PlantsOff();
+        Sunflowers.SetActive(false);
+        break;
+
+        case CropType.WHEAT:
+        PlantsOff();
+        Wheats.SetActive(false);
+        break;        
+
+
       }
     }
 

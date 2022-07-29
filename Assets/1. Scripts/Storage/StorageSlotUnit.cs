@@ -29,9 +29,10 @@ public class StorageSlotUnit : MonoBehaviour {
     }
 
     public void SellUIOpen(){
-        
-        SellUI.SetActive(true);
-        
+        if(curData != null){
+          SellUI.SetActive(true);
+
+        }    
     }
 
     
@@ -40,7 +41,9 @@ public class StorageSlotUnit : MonoBehaviour {
     }
 
     public void SellItem(){
-        curData = null;
+       FinanceManager.Instance.curMoney = FinanceManager.Instance.startMoney + curData.sellingPrice;
+        ResetItem();
+        //금액 추가.
 
     }
     
