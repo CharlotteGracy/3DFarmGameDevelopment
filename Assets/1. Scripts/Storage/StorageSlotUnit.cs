@@ -15,6 +15,7 @@ public class StorageSlotUnit : MonoBehaviour {
 
     public CropData curData;
    // public Image itemImage;
+   public int index = 0;
 
     public void AddItem(CropData data){
         curData = data;
@@ -41,9 +42,11 @@ public class StorageSlotUnit : MonoBehaviour {
     }
 
     public void SellItem(){
-       FinanceManager.Instance.curMoney = FinanceManager.Instance.startMoney + curData.sellingPrice;
-        ResetItem();
-        //금액 추가.
+     //   FinanceManager.Instance.curMoney = FinanceManager.Instance.startMoney + curData.sellingPrice;
+        StorageManager.Instance.RemoveNum(StorageManager.Instance.cropList[index]);
+        SellUI.SetActive(false);
+        // ResetItem();
+         //금액 추가.
 
     }
     

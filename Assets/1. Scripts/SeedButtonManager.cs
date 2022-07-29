@@ -101,11 +101,5 @@ public class SeedButtonManager : Singleton<SeedButtonManager>
         sunflowerButton.image.sprite = normalButton;
         wheatButton.image.sprite = selectedButton;
     }
-
-
-    public void SeedTypeChosen(){
-
-       
-    }
   
 }
