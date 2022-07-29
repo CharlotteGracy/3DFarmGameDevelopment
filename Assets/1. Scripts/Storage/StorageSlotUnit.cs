@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class StorageSlotUnit : MonoBehaviour
-{
+public class StorageSlotUnit : MonoBehaviour {
 
+
+    public GameObject SellUI;
+    public Button Slot;
+
+    
     public Image itemImage;
 
     public CropData curData;
@@ -21,9 +26,24 @@ public class StorageSlotUnit : MonoBehaviour
         curData = null;
         itemImage.sprite = null;
         itemImage.enabled = false;
+    }
 
+    public void SellUIOpen(){
+        
+        SellUI.SetActive(true);
         
     }
 
+    
+    public void SellUICancel(){
+        SellUI.SetActive(false);
+    }
+
+    public void SellItem(){
+        curData = null;
+
+    }
+    
+    
     
 }

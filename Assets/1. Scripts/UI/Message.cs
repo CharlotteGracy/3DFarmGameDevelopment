@@ -50,11 +50,11 @@ public class Message : MonoBehaviour
 
 
     IEnumerator MessageTwinkle(){
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.7f);
         mText.enabled = false;
         yield return new WaitForSecondsRealtime(0.3f);
         mText.enabled = true;
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.3f);
         mText.enabled = false;
 
     }

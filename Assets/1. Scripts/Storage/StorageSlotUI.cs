@@ -5,26 +5,27 @@ using UnityEngine;
 public class StorageSlotUI : MonoBehaviour
 {
     StorageSlotUnit[] storageSlots;
+    //Vector3 mousePos, transPos, targetPos;
+    int SlotmaxCount;
 
-    private void Update() {
-      //  UpdateUI();
-    }
+  
 
     public void UpdateUI(){
 
         storageSlots = GetComponentsInChildren<StorageSlotUnit>();
 
         List<CropData> list = StorageManager.Instance.cropList;
+        SlotmaxCount = StorageManager.Instance.maxCount - 1;
 
         for(int i = 0; i<storageSlots.Length; i++){
             int count = list.Count;
             if(i<count){
-                storageSlots[i].AddItem(list[i]);
+                storageSlots[SlotmaxCount - i].AddItem(list[i]);
             }
             else{
-                storageSlots[i].ResetItem();
+                storageSlots[SlotmaxCount - i].ResetItem();
             }
         }
     }
-    
+
 }
