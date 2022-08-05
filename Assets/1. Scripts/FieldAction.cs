@@ -62,13 +62,15 @@ public class FieldAction : MonoBehaviour
     public void ShovelUsed(){
 
         Debug.Log("삽 사용");
-        //씨앗 뿌리기 활성화
-        StartCoroutine(Digged());
-        shovelUsed = true;
+        if(wet == true){
 
+        }
+        else{
+          //씨앗 뿌리기 활성화
+          StartCoroutine(Digged());
+          shovelUsed = true;          
+        }
     }
-
-    
 
     public void SeedUsed(){
         //Debug.Log(gameObject.name);
@@ -104,10 +106,6 @@ public class FieldAction : MonoBehaviour
             }
           }
         }
-
-        //씨앗 Prefab을 각 Cube에 추가
-
- 
     }
 
 
