@@ -14,7 +14,7 @@ public class StorageSlotUI : MonoBehaviour
 
         storageSlots = GetComponentsInChildren<StorageSlotUnit>();
 
-        List<CropData> list = StorageManager.Instance.cropList;
+        List<ItemData> list = StorageManager.Instance.itemList;
         SlotmaxCount = StorageManager.Instance.maxCount - 1;
 
         for(int i = 0; i<storageSlots.Length; i++){

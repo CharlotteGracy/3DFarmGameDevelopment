@@ -13,12 +13,12 @@ public class StorageSlotUnit : MonoBehaviour {
     
     public Image itemImage;
 
-    public CropData curData;
+    public ItemData curData;
    // public Image itemImage;
   // public int money;
    public int index = 0;
 
-    public void AddItem(CropData data){
+    public void AddItem(ItemData data){
         curData = data;
         itemImage.sprite = data.icon;
         itemImage.enabled = true;
@@ -47,7 +47,7 @@ public class StorageSlotUnit : MonoBehaviour {
         FinanceManager.Instance.curMoney = FinanceManager.Instance.curMoney + curData.sellingPrice;
       //  Debug.Log(money);
 
-        StorageManager.Instance.RemoveNum(StorageManager.Instance.cropList[index]);
+        StorageManager.Instance.RemoveNum(StorageManager.Instance.itemList[index]);
         SellUI.SetActive(false);
         // ResetItem();
          //금액 추가.
