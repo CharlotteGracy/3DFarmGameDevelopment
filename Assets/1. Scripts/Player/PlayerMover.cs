@@ -28,7 +28,7 @@ public class PlayerMover : MonoBehaviour
     float mouseX;
     float mouseY;    
 
-    private CropData data;
+    private ItemData data;
     private bool storageSpace;
 
 

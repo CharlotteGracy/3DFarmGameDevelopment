@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4531300573220607312}
   - component: {fileID: 4522003186089423650}
   - component: {fileID: 5761841884886359263}
+  - component: {fileID: 6695106142794294420}
   m_Layer: 0
   m_Name: MinableCoal
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: b6faae67d18e4a342ab49752d11918b7, type: 3}
+--- !u!114 &6695106142794294420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508468267053754720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b5f6b7fa7e1bb448918613fd60c8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coalData: {fileID: 11400000, guid: 693c2538ac392c148aa54d0683258cb8, type: 2}

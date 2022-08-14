@@ -9,6 +9,7 @@ public class CoalTimer : MonoBehaviour
 
 
    public float totalSec;
+   public float originalSec;
 
     public int sec;
     public int min;
@@ -28,6 +29,7 @@ public class CoalTimer : MonoBehaviour
 
 
     private void Start() {
+        originalSec = totalSec;
         timeText.text = min + " : " + sec;
         if(min > 0){
             totalSec += min*60;
@@ -60,6 +62,7 @@ public class CoalTimer : MonoBehaviour
             Timer();
         }
         else{
+            TimerReset();
         }
     }
 
@@ -73,7 +76,23 @@ public class CoalTimer : MonoBehaviour
             CoalMinable();
             timerActive = false;
         }
+
     }
+
+    public void TimerReset(){
+
+        if(carriageCoal.activeSelf == false){
+            totalSec = originalSec;
+            timerActive = true;
+            timeText.faceColor = Color.black;
+
+        }
+
+ 
+
+    }
+
+    //Coal을 수집하면 타이머가 리셋되도록 
 
 
 

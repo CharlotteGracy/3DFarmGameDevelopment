@@ -10,7 +10,7 @@ public enum CropType{CARROT, CABBAGE, WATERMELON, PUMPKIN, SUNFLOWER, WHEAT,};
 
 public class CropData : ItemData
 {
-    //new public string name;
+   // new public string name;
     public CropType cropType;
   
 

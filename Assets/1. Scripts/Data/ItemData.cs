@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class ItemData : ScriptableObject
 {
-    public string name;
+    new public string name;
     public string Description;
    // public CropType cropType;
 
