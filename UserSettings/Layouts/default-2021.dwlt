@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 137
+  controlID: 119
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 138
+  controlID: 120
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -275,7 +275,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 139
+  controlID: 121
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -374,22 +374,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/1. Scripts
+    - Assets/6.Data
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/1. Scripts
+  - Assets/6.Data
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\SUNWOO\Desktop\Game Development_Unity\3DFarmGameDevelopment
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 8.3333435}
-    m_SelectedIDs: 20d00000
-    m_LastClickedID: 53280
-    m_ExpandedIDs: 0000000010cf000012cf000014cf000016cf000018cf00001acf00001ccf00001ecf000020cf000022cf000046d0000000ca9a3b
+    scrollPos: {x: 0, y: 108.33334}
+    m_SelectedIDs: e4240200
+    m_LastClickedID: 140516
+    m_ExpandedIDs: 0000000010cf000012cf000014cf000018cf00001acf00001ccf00001ecf000020cf000022cf00008624020000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -442,9 +442,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: a4060000
-    m_LastClickedInstanceID: 1700
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: c47f0000
+    m_LastClickedInstanceID: 32708
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c62300007455000082550000f4ba0f000000000044980000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -547,9 +547,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a4060000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 30fbffff
+      m_SelectedIDs: 2807ffff
+      m_LastClickedID: -63704
+      m_ExpandedIDs: 3400ffff2807ffff30fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -651,7 +651,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 24.666666}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -662,9 +662,9 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 67.5, y: 86}
+      snapOffset: {x: -112, y: 25.999998}
       snapOffsetDelta: {x: 0, y: 0}
-      snapCorner: 0
+      snapCorner: 1
       id: Orientation
       index: 0
       layout: 4
@@ -799,9 +799,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.3357625, y: 5.1281676, z: 116.14267}
+    m_Target: {x: -11.982484, y: 3.002562, z: -17.35399}
     speed: 2
-    m_Value: {x: -1.3357625, y: 5.1281676, z: 116.14267}
+    m_Value: {x: -11.982484, y: 3.002562, z: -17.35399}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -848,13 +848,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.26868233, y: -0.64526284, z: 0.26027206, w: 0.66611314}
+    m_Target: {x: 0.07767494, y: -0.6241108, z: 0.06255495, w: 0.77494705}
     speed: 2
-    m_Value: {x: 0.26868197, y: -0.645262, z: 0.26027173, w: 0.66611224}
+    m_Value: {x: 0.07767479, y: -0.6241096, z: 0.06255483, w: 0.77494556}
   m_Size:
-    m_Target: 76.04042
+    m_Target: 0.86341435
     speed: 2
-    m_Value: 76.04042
+    m_Value: 0.86341435
   m_Ortho:
     m_Target: 0
     speed: 2

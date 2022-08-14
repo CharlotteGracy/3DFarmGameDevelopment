@@ -9,7 +9,7 @@ public class CoalTimer : MonoBehaviour
 
 
    public float totalSec;
-   public float originalSec;
+   private float originalSec;
 
     public int sec;
     public int min;
