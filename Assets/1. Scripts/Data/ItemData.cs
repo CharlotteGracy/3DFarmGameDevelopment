@@ -18,5 +18,6 @@ public class ItemData : ScriptableObject
     [Header("Item UI")]
     public Sprite icon;
     
+    public int price;
 
 }

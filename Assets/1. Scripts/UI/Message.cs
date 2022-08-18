@@ -48,6 +48,13 @@ public class Message : MonoBehaviour
 
     }
 
+    public void NotEnoughMoney(){
+        mText.enabled = true;
+        notice.text = "Not Enough Money!";
+        StartCoroutine(MessagePop());
+
+    }
+
 
     IEnumerator MessageTwinkle(){
         yield return new WaitForSecondsRealtime(0.7f);

@@ -52,12 +52,6 @@ public class FieldAction : MonoBehaviour
 
     
 
-
-    private void Awake()
-    {
-     
-    }
-
     
     public void ShovelUsed(){
 

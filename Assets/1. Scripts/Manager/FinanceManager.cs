@@ -45,18 +45,4 @@ public class FinanceManager : Singleton<FinanceManager>
     }
 
 
-
-    public void NoMoney(){
-        //금액 부족시 비활성화
-        Debug.Log("금액이 부족합니다!");
-        //NotEnoughMoney
-
-    }
-
-    
-
-
-
-
-
 }

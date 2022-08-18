@@ -96,7 +96,6 @@ public class PlayerMover : MonoBehaviour
             if(fieldAction.grownUp == true){
 
                 GetCropsInStorage();
-                //Harvest();
 
             }
 
@@ -154,8 +153,7 @@ public class PlayerMover : MonoBehaviour
 
     public void GetCropsInStorage(){
         data = fieldAction.cropData;
-        Debug.Log(data.name);
-      //  StorageManager.Instance.AddNum(data);
+        //Debug.Log(data.name);
         if(StorageManager.Instance.AddNum(data) == false){
         }
         else{

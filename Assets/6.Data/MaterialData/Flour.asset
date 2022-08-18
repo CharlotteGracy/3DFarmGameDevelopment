@@ -16,5 +16,5 @@ MonoBehaviour:
   Description: "\uBC00\uAC00\uB8E8\uC785\uB2C8\uB2E4."
   sellingPrice: 20
   icon: {fileID: 21300000, guid: bd5dff2745ca9ba4fb70e3ad44ff6a03, type: 3}
-  Price: 20
+  price: 20
   materalType: 0

@@ -16,5 +16,5 @@ MonoBehaviour:
   Description: "\uC591\uBC30\uCD94\uC785\uB2C8\uB2E4"
   sellingPrice: 25
   icon: {fileID: 21300000, guid: c8a43e72f8e6d524ebb9eb37bb09487d, type: 3}
-  Price: 50
+  price: 50
   cropType: 1

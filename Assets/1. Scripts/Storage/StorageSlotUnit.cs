@@ -43,18 +43,12 @@ public class StorageSlotUnit : MonoBehaviour {
     }
 
     public void SellItem(){
-        //money = FinanceManager.Instance.curMoney;
         FinanceManager.Instance.curMoney = FinanceManager.Instance.curMoney + curData.sellingPrice;
-      //  Debug.Log(money);
-
         StorageManager.Instance.RemoveNum(StorageManager.Instance.itemList[index]);
         SellUI.SetActive(false);
-        // ResetItem();
-         //금액 추가.
-
-
     }
-    
-    
+
+
+   
     
 }

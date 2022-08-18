@@ -9,7 +9,7 @@ public enum MateralType{FLOUR, OIL, SAUCE,};
 public class MaterialData : ItemData
 {
 
-    public int Price;
+   // public int Price;
 
     public MateralType materalType;
     
