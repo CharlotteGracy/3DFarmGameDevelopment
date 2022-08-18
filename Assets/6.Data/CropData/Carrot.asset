@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Carrot
   Description: "\uB2F9\uADFC\uC785\uB2C8\uB2E4"
-  cropType: 0
   sellingPrice: 5
   icon: {fileID: 21300000, guid: 0839133624f2c0a4e82c908faaca5767, type: 3}
-  cropObject: {fileID: 0}
+  Price: 10
+  cropType: 0

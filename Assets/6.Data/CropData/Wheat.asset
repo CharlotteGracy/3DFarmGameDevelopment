@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Wheat
   Description: "\uBC00\uC785\uB2C8\uB2E4."
-  cropType: 5
   sellingPrice: 20
   icon: {fileID: 21300000, guid: 38f1eaf9de568a641a1b456e6fc648a3, type: 3}
-  cropObject: {fileID: 0}
+  Price: 40
+  cropType: 5

@@ -16,3 +16,4 @@ MonoBehaviour:
   Description: "\uC694\uB9AC\uD560 \uB54C \uC0AC\uC6A9\uD558\uB294 \uC11D\uD0C4\uC785\uB2C8\uB2E4."
   sellingPrice: 50
   icon: {fileID: 21300000, guid: 0912c96e7e8f7234cb0b782698f03d27, type: 3}
+  Price: 500

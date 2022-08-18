@@ -11,8 +11,9 @@ public class FinanceManager : Singleton<FinanceManager>
     public UnityAction OnChangeMoney;
 
     public Text moneyText;
+    public Text storeMoneyText;
 
-    private int startMoney = 500;
+    private int startMoney = 100;
 
     private int _money;
     public int curMoney{
@@ -23,6 +24,7 @@ public class FinanceManager : Singleton<FinanceManager>
             _money = value;
             OnChangeMoney?.Invoke();
             moneyText.text = _money.ToString();
+            storeMoneyText.text =_money.ToString();
         }
     }
 

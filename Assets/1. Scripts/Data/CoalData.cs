@@ -6,5 +6,7 @@ using UnityEngine;
 
 public class CoalData : ItemData
 {
+    public int Price;
+
     
 }

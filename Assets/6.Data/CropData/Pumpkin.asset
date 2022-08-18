@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Pumpkin
   Description: "\uD638\uBC15\uC785\uB2C8\uB2E4."
-  cropType: 3
   sellingPrice: 50
   icon: {fileID: 21300000, guid: 6066af28bce4858499adaf5ccda4b43d, type: 3}
-  cropObject: {fileID: 0}
+  Price: 100
+  cropType: 3

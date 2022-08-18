@@ -12,7 +12,6 @@ public class ItemData : ScriptableObject
     public string Description;
    // public CropType cropType;
 
-
     public int sellingPrice;
     
     

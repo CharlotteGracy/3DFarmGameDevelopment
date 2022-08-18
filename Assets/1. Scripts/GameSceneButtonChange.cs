@@ -48,7 +48,7 @@ public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
 
 
     public void GoToBarn(){
-        SceneManager.LoadScene("BarnScene");
+        Debug.Log("Go to Barn!");
         
 
     }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Cabbage
   Description: "\uC591\uBC30\uCD94\uC785\uB2C8\uB2E4"
-  cropType: 1
   sellingPrice: 25
   icon: {fileID: 21300000, guid: c8a43e72f8e6d524ebb9eb37bb09487d, type: 3}
-  cropObject: {fileID: 0}
+  Price: 50
+  cropType: 1
