@@ -14,8 +14,7 @@ public class StorageSlotUnit : MonoBehaviour {
     public Image itemImage;
 
     public ItemData curData;
-   // public Image itemImage;
-  // public int money;
+   
    public int index = 0;
 
     public void AddItem(ItemData data){

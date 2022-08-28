@@ -181,9 +181,5 @@ public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
         }       
     }
 
-
-
-
- 
     
 }

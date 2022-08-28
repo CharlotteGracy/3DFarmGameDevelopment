@@ -25,6 +25,9 @@ public class FinanceManager : Singleton<FinanceManager>
             OnChangeMoney?.Invoke();
             moneyText.text = _money.ToString();
             storeMoneyText.text =_money.ToString();
+            if(_money >= 200){
+                LevelManager.Instance.LevelOpen();
+            }
         }
     }
 

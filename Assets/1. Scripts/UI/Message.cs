@@ -55,6 +55,12 @@ public class Message : MonoBehaviour
 
     }
 
+    public void TimerOver(){
+        mText.enabled = true;
+        notice.text = "Time Over!";
+        StartCoroutine(MessageTwinkle());
+    }
+
 
     IEnumerator MessageTwinkle(){
         yield return new WaitForSecondsRealtime(0.7f);

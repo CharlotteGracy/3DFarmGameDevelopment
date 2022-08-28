@@ -5,7 +5,6 @@ using UnityEngine;
 public class StorageSlotUI : MonoBehaviour
 {
     StorageSlotUnit[] storageSlots;
-    //Vector3 mousePos, transPos, targetPos;
     int SlotmaxCount;
 
   
@@ -25,7 +24,10 @@ public class StorageSlotUI : MonoBehaviour
             else{
                 storageSlots[SlotmaxCount - i].ResetItem();
             }
+            
         }
+       // CookManager.Instance.ClassifyDatas();
+
     }
 
 }

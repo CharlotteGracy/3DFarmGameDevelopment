@@ -8,6 +8,7 @@ public class LevelMap : MonoBehaviour
     public Material currentMat;
     public Material unlockedMat;
     Renderer levelColor;
+    public int levelNum;
     
     public LevelData levelData;
 

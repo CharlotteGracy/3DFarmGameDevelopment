@@ -8,5 +8,15 @@ public class LevelData : ScriptableObject
 {
 
     public int levelNum;
+
+    [Header("GoalProduct")]
+
+    public int goalEgg;
+    public int goalHam;
+    public int goalMilk;
     
 }
+
+
+
+

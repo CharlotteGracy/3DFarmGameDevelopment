@@ -17,4 +17,5 @@ MonoBehaviour:
   sellingPrice: 20
   icon: {fileID: 21300000, guid: bd5dff2745ca9ba4fb70e3ad44ff6a03, type: 3}
   price: 20
+  itemType: 2
   materalType: 0
