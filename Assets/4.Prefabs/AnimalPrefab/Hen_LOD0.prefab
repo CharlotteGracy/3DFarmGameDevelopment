@@ -168,7 +168,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1512003508680724528}
   - component: {fileID: 1512003508689829852}
-  - component: {fileID: 6076562019984439327}
+  - component: {fileID: 2400469373492682536}
+  - component: {fileID: 2549366134133745760}
+  - component: {fileID: 8174728500409174088}
   m_Layer: 0
   m_Name: Hen_LOD0
   m_TagString: Untagged
@@ -213,8 +215,50 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!65 &6076562019984439327
-BoxCollider:
+--- !u!114 &2400469373492682536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512003508680297488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ec6f06b9a22dfb4cbb5b126a2821c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSpeed: 0.005
+  distance: 0
+  moveTime: 4
+  pauseTime: 3
+  time: 0
+  rotateDirection: {x: 0, y: 0, z: 0}
+  egg: {fileID: 3624557159163019946, guid: 3f545a1480f197e4ca8063e2d7e40763, type: 3}
+  ham: {fileID: 4356539026546850585, guid: 675108dcdd76b9b4b8bcc4f47b738e33, type: 3}
+  milk: {fileID: 1101644552034917086, guid: 225e56e3f5cf2a3449e5948664d8f05e, type: 3}
+  animalType: 0
+  timerOn: 0
+  isWalking: 0
+  timeToProduce: 0
+  rigidbody: {fileID: 2549366134133745760}
+--- !u!54 &2549366134133745760
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512003508680297488}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 0
+--- !u!136 &8174728500409174088
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -223,9 +267,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.25, y: 2.02, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Radius: 0.78
+  m_Height: 2.17
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.05, z: -0.08}
 --- !u!1 &1512003508680297490
 GameObject:
   m_ObjectHideFlags: 0

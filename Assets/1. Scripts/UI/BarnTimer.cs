@@ -15,6 +15,8 @@ public class BarnTimer : MonoBehaviour
     public int sec;
 
     private void Start() {
+        min = (int)totalSec / 60;
+        sec = (int)totalSec % 60;
         goalTimeText.text = string .Format("{0:D2}:{1:D2}", min, sec);
  
     }
