@@ -5,13 +5,25 @@ using UnityEngine;
 public class AnimalSaleManager : Singleton<AnimalSaleManager>
 {
 
+    [Header("Animal Prefabs")]
     public GameObject hen;
     public GameObject pig;
     public GameObject cow;
 
-    public GameObject barnCollider;
+    [Header("Animal Nums")]
+    [SerializeField] private int henNum;
+    [SerializeField] private int pigNum;
+    [SerializeField] private int cowNum;
 
+    public Message b_messageText;
+
+
+
+
+    public GameObject barnCollider;
     private BoxCollider area;
+    private int animalCost;
+
 
     private void Awake() {
         _instance = this;
@@ -34,21 +46,46 @@ public class AnimalSaleManager : Singleton<AnimalSaleManager>
 
    
     public void BuyHen(){
-        GameObject newOne = Instantiate(hen);
-        newOne.transform.position = GetRandomPos();
-      
+        animalCost = 100;
 
+        if(FinanceManager.Instance.curMoney>=animalCost){
+            FinanceManager.Instance.curMoney = FinanceManager.Instance.curMoney - animalCost;
+            GameObject newOne = Instantiate(hen);
+            newOne.transform.position = GetRandomPos();
+            henNum += 1;
+        }
+        else{
+            b_messageText.NotEnoughMoney();
+        }
     }
 
     public void BuyPig(){
-        GameObject newOne = Instantiate(pig);
-        newOne.transform.position = GetRandomPos();
+        animalCost = 500;
 
+        if(FinanceManager.Instance.curMoney>=animalCost){
+            FinanceManager.Instance.curMoney = FinanceManager.Instance.curMoney - animalCost;
+            GameObject newOne = Instantiate(pig);
+            newOne.transform.position = GetRandomPos();
+            pigNum += 1;
+        }
+        else{
+            b_messageText.NotEnoughMoney();
+
+        }
     }
 
     public void BuyCow(){
-        GameObject newOne = Instantiate(cow);
-        newOne.transform.position = GetRandomPos();
+        animalCost = 1000;
 
+        if(FinanceManager.Instance.curMoney>=animalCost){
+            FinanceManager.Instance.curMoney = FinanceManager.Instance.curMoney - animalCost;
+            GameObject newOne = Instantiate(cow);
+            newOne.transform.position = GetRandomPos();
+            cowNum += 1;
+        }
+        else{
+            b_messageText.NotEnoughMoney();
+
+        }
     }
 }

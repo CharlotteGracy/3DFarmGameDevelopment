@@ -11,24 +11,46 @@ public class LevelMap : MonoBehaviour
     public int levelNum;
     
     public LevelData levelData;
+    private GameSceneButtonChange gameSceneBC;
+
 
     private void Start() {
         levelColor = gameObject.GetComponent<Renderer>();
+
+    }
+
+
+    private void Awake() {
+        
+        gameSceneBC = GameObject.Find("GameManager").GetComponent<GameSceneButtonChange>();
+
     }
 
 
     private void OnMouseDown() {
-        if (levelColor.material != unlockedMat){
+        if (this.levelColor.sharedMaterial != lockedMat){
             //해당 레벨로 진입
+            Debug.Log("레벨을 시작합니다!");
+            LevelManager.Instance.levelNum = levelNum;
+
+            LevelManager.Instance.GameStart();
+            gameSceneBC.BarnOn();
+        }
+
+        if(this.levelColor.sharedMaterial == lockedMat){
+            Debug.Log("Locked!");
 
         }
         else{
-            Debug.Log("Unlocked!");
         }
 
 
 
         
+    }
+
+    public void LevelDone(){
+        levelColor.material = unlockedMat;
     }
 
     

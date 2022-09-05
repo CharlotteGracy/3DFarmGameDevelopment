@@ -23,6 +23,9 @@ public class CookManager : Singleton<CookManager>
 
 
         for(int i =0; i<StorageManager.Instance.maxCount; i++){
+           // if (StorageManager.Instance.itemList[i] is CropData){
+
+            //}
             if(StorageManager.Instance.itemList[i].itemType == ItemData.ItemType.CROP){
                 cropList.Add((CropData)StorageManager.Instance.itemList[i]);
 

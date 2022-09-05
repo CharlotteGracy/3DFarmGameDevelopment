@@ -8,6 +8,7 @@ public class LevelData : ScriptableObject
 {
 
     public int levelNum;
+    public float goalSeconds;
 
     [Header("GoalProduct")]
 

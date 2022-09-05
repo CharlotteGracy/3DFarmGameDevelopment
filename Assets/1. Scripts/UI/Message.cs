@@ -61,6 +61,20 @@ public class Message : MonoBehaviour
         StartCoroutine(MessageTwinkle());
     }
 
+    public void ReadyStart(){
+        mText.enabled = true;
+        notice.text = "Ready";
+        StartCoroutine(MessagePop());
+        notice.text = "Start!";
+        StartCoroutine(MessagePop());
+    }
+
+    public void LevelComplete(){
+       mText.enabled = true;
+        notice.text = "Win!";
+        StartCoroutine(MessagePop());
+    }
+
 
     IEnumerator MessageTwinkle(){
         yield return new WaitForSecondsRealtime(0.7f);

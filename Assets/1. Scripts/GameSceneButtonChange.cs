@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
+public class GameSceneButtonChange : MonoBehaviour
 {
 
 
@@ -28,6 +28,15 @@ public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
     public GameObject seed;
     public GameObject wateringCan;
 
+    [Header("Camera")]
+    public GameObject mapCamera;
+    public GameObject barnCamera;
+    public GameObject playerCamera;
+    public GameObject gameCanvas;
+    public GameObject mapCanvas;
+    public GameObject barnCanvas;
+
+
     public bool ToolUISwitchOn = false;
     public bool ShovelSelectOn = false;
     public bool SeedSelectOn = false;
@@ -43,14 +52,7 @@ public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
 
    
     private void Awake() {
-        _instance = this;
-    }
-
-
-    public void GoToBarn(){
-        Debug.Log("Go to Barn!");
-        
-
+       // _instance = this;
     }
 
     public void KitchenUIOn(){
@@ -179,6 +181,26 @@ public class GameSceneButtonChange : Singleton<GameSceneButtonChange>
             wateringCan.SetActive(false);
             WateringCanSelectOn = false;            
         }       
+    }
+
+
+    public void QuestOn(){
+        mapCamera.SetActive(true);
+        mapCanvas.SetActive(true);
+        playerCamera.SetActive(false);
+        gameCanvas.SetActive(false);
+        
+
+    }
+
+    public void BarnOn(){
+        barnCamera.SetActive(true);
+        playerCamera.SetActive(false);
+
+        gameCanvas.SetActive(false);
+        barnCanvas.SetActive(true);
+        LevelManager.Instance.GameStart();
+       
     }
 
     

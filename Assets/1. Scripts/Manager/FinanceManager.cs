@@ -10,10 +10,9 @@ public class FinanceManager : Singleton<FinanceManager>
 
     public UnityAction OnChangeMoney;
 
-    public Text moneyText;
-    public Text storeMoneyText;
+    public Text[] moneyTexts;
 
-    private int startMoney = 100;
+    private int startMoney = 5000;
 
     private int _money;
     public int curMoney{
@@ -23,8 +22,10 @@ public class FinanceManager : Singleton<FinanceManager>
         set{
             _money = value;
             OnChangeMoney?.Invoke();
-            moneyText.text = _money.ToString();
-            storeMoneyText.text =_money.ToString();
+
+            for(int i =0; i<moneyTexts.Length;i++){
+                moneyTexts[i].text = _money.ToString();
+            }    
             if(_money >= 200){
                 LevelManager.Instance.LevelOpen();
             }

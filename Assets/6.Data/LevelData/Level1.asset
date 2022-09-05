@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Level1
   m_EditorClassIdentifier: 
   levelNum: 1
+  goalSeconds: 40
   goalEgg: 5
   goalHam: 0
   goalMilk: 0

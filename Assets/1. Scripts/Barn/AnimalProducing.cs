@@ -14,16 +14,20 @@ using UnityEngine;
 public class AnimalProducing : MonoBehaviour
 
 {
+    public enum AnimalState { Idle, Walk }
+    private	AnimalState	animalState;
+
 
     public float walkSpeed = 0.001f;
     private float speed;
-    public float distance;
+    
     public float moveTime;
     public float pauseTime;
     [SerializeField]
     private float time;
     public Vector3 rotateDirection;
 
+    int rotateNum = 1;
 
 
 
@@ -43,51 +47,35 @@ public class AnimalProducing : MonoBehaviour
     
 
     [SerializeField]
-    private Rigidbody rigidbody;
+    new private Rigidbody rigidbody;
     //[SerializeField]
     private Animator animator;
+    new private Collider collider;
 
     
-
+ 
     // Start is called before the first frame update
     private void Start() {
         animator = this.gameObject.GetComponent<Animator>();
+        collider = this.gameObject.GetComponent<CapsuleCollider>();
         timerOn = true;
         isWalking = true;
       
     }
+    private void Awake() {
+        ChangeState(AnimalState.Idle);
+
+    }
 
     private void Update() {
-        Action();
-        AnimalTimer();
+       
 
     }
 
     private void FixedUpdate() {
-       
         Move();
-
-      
     }
 
-    public void Distance(){
-
-    }
-
-
-    public void Action(){
-       if(isWalking) {
-            MoveTimer();
-
-       }
-       else{
-            PauseTimer();
-
-       }
-       if(timeToProduce){
-        Produce();
-       }
-    }
 
 
     public void Move(){  
@@ -101,78 +89,72 @@ public class AnimalProducing : MonoBehaviour
             animator.SetBool("Walking", isWalking);
             speed = 0f;
             rigidbody.MovePosition(transform.position);
-
        }
 
     }
 
+    void RotateButton(){
+        //아래는 1, 왼쪽은 2, 오른쪽은 3, 위쪽은 4
 
-    public void AnimalTimer(){
-        time -= Time.deltaTime;
+        switch(rotateNum){
+            case 1:
+            rotateDirection = new Vector3 (0,0,0);
+            break;
 
-    }
+            case 2:
+            rotateDirection = new Vector3 (0,90,0);
+            break;
 
-    public void MoveTimer(){
-        if(timerOn){
-            time = moveTime;
-            timerOn = false;
+            case 3:
+            rotateDirection = new Vector3 (0,180,0);
+            break;
 
-        }
-
-        if(time<0){
-            isWalking = false;
-            timerOn = true;
-
-        }
-    }
-
-    public void PauseTimer(){
-        if(timerOn){
-            time = pauseTime;
-            timerOn = false;
-
-        }
-        
-        //time -= Time.deltaTime;
-        if(time<0){
-            isWalking = true;
-            timeToProduce = true;
-            timerOn = true;
+            case 4:
+            rotateDirection = new Vector3 (0,270,0);
+            break;
 
         }
     }
-
-    public void ProduceTimer(){
-
-    }
-
-    
-
-    void Rotate(){
-        if(isWalking){
-            Vector3 rotation = Vector3.Lerp(transform.eulerAngles, rotateDirection, 0.01f);
-            rigidbody.MoveRotation(Quaternion.Euler(rotation));
-        }
-    }
-
-
 
    
+    
+    void Rotate(){
+       int curRotateNum;
+        curRotateNum = rotateNum;
+
+        rotateNum = Random.Range(1, 5);
+
+        while(curRotateNum == rotateNum){
+            rotateNum = Random.Range(1, 5);
+
+        }
+        RotateButton();
+        Vector3 rotation = Vector3.Lerp(transform.eulerAngles, rotateDirection, 100f);
+        rigidbody.MoveRotation(Quaternion.Euler(rotation));
+        
+    }
+
     //동물 종류에 알맞게 생산품 생성
     public void Produce(){
+       GameObject newProduction;
+
        switch(animalType){
             case AnimalType.HEN:
             Debug.Log("알 생산!");
+            newProduction = Instantiate(egg);
+            newProduction.transform.position = this.gameObject.transform.position + new Vector3(0, 0.1f, 0);
             break;
 
             case AnimalType.PIG:
             Debug.Log("고기 생산!");
-
+            newProduction = Instantiate(ham);
+            newProduction.transform.position = this.gameObject.transform.position + new Vector3(0, 0.1f, 0);
             break;
 
             case AnimalType.COW:
             Debug.Log("우유 생산!");
-
+            newProduction = Instantiate(milk);
+            newProduction.transform.position = this.gameObject.transform.position + new Vector3(0, 0.1f, 0);
             break;            
         }
         timeToProduce = false;
@@ -182,6 +164,32 @@ public class AnimalProducing : MonoBehaviour
     private void OnCollisionEnter(Collision other) {
         //회전
         Debug.Log("충돌!");
+        Rotate();
+        
     }
+        //유한상태
+        //idle, move
+        //코루틴 상태 패턴
+    	private void ChangeState(AnimalState newState){
+		// 이전 상태의 코루틴 종료
+		StopCoroutine(animalState.ToString());
+		// 새로운 상태로 변경
+		animalState	= newState;
+		// 현재 상태의 코루틴 실행
+		StartCoroutine(animalState.ToString());
+	}
+
+	private IEnumerator Idle(){
+		isWalking = false;
+		yield return new WaitForSeconds(pauseTime);
+        Produce();
+		ChangeState(AnimalState.Walk);
+	}
+
+	private IEnumerator Walk(){
+		isWalking = true;
+		yield return new WaitForSeconds(moveTime);
+		ChangeState(AnimalState.Idle);
+	}
          
 }
