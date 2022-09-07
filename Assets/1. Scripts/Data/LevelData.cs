@@ -15,6 +15,8 @@ public class LevelData : ScriptableObject
     public int goalEgg;
     public int goalHam;
     public int goalMilk;
+
+    public int goalNum;
     
     
 }

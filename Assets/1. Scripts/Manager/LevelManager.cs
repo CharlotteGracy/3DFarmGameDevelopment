@@ -8,7 +8,9 @@ public class LevelManager : Singleton<LevelManager>
     public Message b_messageText;
     public Button questButton;
     public int levelNum;
-    public int questNum = 2;
+    public int maxLevelNum;
+    public int questNum = 3;
+    public int goalNum;
 
     public LevelMap[] levelMap;
     public int goalEgg;
@@ -20,30 +22,21 @@ public class LevelManager : Singleton<LevelManager>
     public QuestBox[] questBox;
    // public QuestBox questCheck;
 
-    private void Start() {
-       
-    }
-  
-
-
     private void Awake() {
         _instance = this;        
         barnBC = GameObject.Find("BarnGameManager").GetComponent<BarnButtonChange>();
-
     }
-
 
 
     public void LevelOpen(){
         questButton.interactable = true;
-
     }
 
     public void LevelTimeSet(){
         barnBC.barnTimer.totalSec = levelMap[levelNum - 1].levelData.goalSeconds;
         barnBC.barnTimer.GoalTimeUI();
         barnBC.barnTimer.timerOn = true;
-       // Debug.Log()
+       
 
     }
 
@@ -54,6 +47,8 @@ public class LevelManager : Singleton<LevelManager>
         LevelTimeSet();
         //퀘스트 설정 스타트
         SetQuest();
+
+        
 
     }
 
@@ -83,6 +78,8 @@ public class LevelManager : Singleton<LevelManager>
         goalHam = levelMap[levelNum - 1].levelData.goalHam;
         goalMilk = levelMap[levelNum - 1].levelData.goalMilk;
 
+        goalNum = levelMap[levelNum - 1].levelData.goalNum;
+
         for(int i =0; i<questNum;i++){
             questBox[i].ProductNum();
         }
@@ -92,23 +89,23 @@ public class LevelManager : Singleton<LevelManager>
 
     public void QuestsComplete(){
         
-        for(int i =0; i<questNum;i++){
+        for(int i =0; i<goalNum;i++){
 
-            if(questBox[i].check.activeSelf == true){
-                barnBC.barnTimer.timerOn = false;
-                DestroyAnimals();
-
-                b_messageText.LevelComplete();
-                levelMap[levelNum -1].LevelDone();
-                
-                //level 수를 하나 올려주고 해당 레벨맵의 색을 CurrentMaterial로 변경.
-                levelNum += 1;
-                levelMap[levelNum - 1].CurLevel();
-
-
-            }
+            if(questBox[i].check.activeSelf == false)
+                return;
 
         }
+        
+        barnBC.barnTimer.timerOn = false;
+        DestroyAnimals();
+
+        b_messageText.LevelComplete();
+        levelMap[levelNum -1].LevelDone();
+        
+        //level 수를 하나 올려주고 해당 레벨맵의 색을 CurrentMaterial로 변경.
+        levelNum += 1;
+        levelMap[levelNum - 1].CurLevel();
+
 
     }
 
@@ -125,6 +122,16 @@ public class LevelManager : Singleton<LevelManager>
         }
 
     }
+
+    public void DestroyProducts(){
+        GameObject[] products = GameObject.FindGameObjectsWithTag("Product");
+        
+
+    }
+
+
+
+
 
     public void ResetLevel(){
         for(int i = 0; i < questNum;i++){

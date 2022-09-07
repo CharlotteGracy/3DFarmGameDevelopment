@@ -27,7 +27,6 @@ public class Production : MonoBehaviour
 
     private void OnMouseDown() {
         Destroy(this.gameObject);
-       // OnProductGet.Invoke();
        int questNum;
        questNum = LevelManager.Instance.questNum;
 
@@ -45,7 +44,7 @@ public class Production : MonoBehaviour
 
         }
        for(int i = 0; i< questNum; i++){
-       LevelManager.Instance.questBox[i].ProductNum();
+            LevelManager.Instance.questBox[i].ProductNum();
        }
        LevelManager.Instance.QuestsComplete();
 

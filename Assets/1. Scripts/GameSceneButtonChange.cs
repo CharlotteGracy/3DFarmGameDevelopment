@@ -47,7 +47,7 @@ public class GameSceneButtonChange : MonoBehaviour
 
     [Header("Buttons")]
 
-    public Button kitchenCloseButton, storeCloseButton, toolCloseButton, yesButton, noButton;
+    public Button storeCloseButton, toolCloseButton, yesButton, noButton;
     public Button storageButton;
 
    
@@ -57,13 +57,14 @@ public class GameSceneButtonChange : MonoBehaviour
 
     public void KitchenUIOn(){
         KitchenUI.SetActive(true);
-        kitchenCloseButton.onClick.AddListener(()=>{
-            CookManager.Instance.RemoveCurData();
-            KitchenUI.SetActive(false);
-            });
         CookManager.Instance.CropShow();
         CookManager.Instance.MaterialShow();
 
+    }
+
+    public void KitchenCloseButton(){
+        CookManager.Instance.RemoveCurData();
+        KitchenUI.SetActive(false);
     }
 
     public void ToolUIOn(){

@@ -46,7 +46,6 @@ public class QuestBox : MonoBehaviour
         check.SetActive(true);
         itemNumText.enabled = false;
       }
-
     }
 
     public void ProductNum(){
