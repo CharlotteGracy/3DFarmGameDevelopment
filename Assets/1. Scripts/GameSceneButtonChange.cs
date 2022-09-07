@@ -57,7 +57,12 @@ public class GameSceneButtonChange : MonoBehaviour
 
     public void KitchenUIOn(){
         KitchenUI.SetActive(true);
-        kitchenCloseButton.onClick.AddListener(()=>{KitchenUI.SetActive(false);});
+        kitchenCloseButton.onClick.AddListener(()=>{
+            CookManager.Instance.RemoveCurData();
+            KitchenUI.SetActive(false);
+            });
+        CookManager.Instance.CropShow();
+        CookManager.Instance.MaterialShow();
 
     }
 

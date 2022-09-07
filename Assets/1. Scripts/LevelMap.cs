@@ -53,6 +53,11 @@ public class LevelMap : MonoBehaviour
         levelColor.material = unlockedMat;
     }
 
+    public void CurLevel(){
+        levelColor.material = currentMat;
+
+    }
+
     
    
 }

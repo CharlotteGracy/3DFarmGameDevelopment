@@ -25,6 +25,7 @@ public class StorageManager : Singleton<StorageManager>
         else{
             itemList.Add(data); 
             storageSlotUI.UpdateUI();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            storageSlotUI.UpdateUI();
+            CookManager.Instance.ClassifyDatas(data);
             return true;
         }
     }

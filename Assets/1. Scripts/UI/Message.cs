@@ -71,7 +71,7 @@ public class Message : MonoBehaviour
 
     public void LevelComplete(){
        mText.enabled = true;
-        notice.text = "Win!";
+        notice.text = "Quests Complete!";
         StartCoroutine(MessagePop());
     }
 

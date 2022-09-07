@@ -15,17 +15,11 @@ public class BarnCountManager : Singleton<BarnCountManager>
         _instance = this;
     }
 
-    public void AddObserver(Observer observer){
-        
 
-    }
-
-    public void RemoveObserver(Observer observer){
-
-    }
-
-    public void Notify(){
-
+    public void ResetCounts(){
+        eggNum = 0;
+        hamNum = 0;
+        milkNum = 0;
     }
 
 }

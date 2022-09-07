@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd840d42f243384ea240f698239483a, type: 3}
+  m_Name: Cupcake
+  m_EditorClassIdentifier: 
+  name: Cupcake
+  Description: 
+  sellingPrice: 500
+  icon: {fileID: 21300000, guid: 804ffc78de778ea4e8ec120d66f50a25, type: 3}
+  price: 0
+  itemType: 3

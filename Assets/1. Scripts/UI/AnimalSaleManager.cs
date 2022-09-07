@@ -11,9 +11,9 @@ public class AnimalSaleManager : Singleton<AnimalSaleManager>
     public GameObject cow;
 
     [Header("Animal Nums")]
-    [SerializeField] private int henNum;
-    [SerializeField] private int pigNum;
-    [SerializeField] private int cowNum;
+    public int henNum;
+    public int pigNum;
+    public int cowNum;
 
     public Message b_messageText;
 

@@ -27,9 +27,9 @@ public class QuestBox : MonoBehaviour
 
       if(BarnCountManager.Instance != null){
       }
+      QuestReset();
 
-      check.SetActive(false);
-      itemNumText.enabled = true;
+
       
     }
     private void Awake() {
@@ -75,5 +75,11 @@ public class QuestBox : MonoBehaviour
 
 
       QuestDone();
+    }
+
+
+    public void QuestReset(){
+      check.SetActive(false);
+      itemNumText.enabled = true;
     }
 }

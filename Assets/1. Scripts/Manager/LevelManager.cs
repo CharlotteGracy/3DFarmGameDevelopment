@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LevelManager : Singleton<LevelManager>
 {
-
+    public Message b_messageText;
     public Button questButton;
     public int levelNum;
     public int questNum = 2;
@@ -48,6 +48,8 @@ public class LevelManager : Singleton<LevelManager>
     }
 
     public void GameStart(){
+
+        ResetLevel();
         //타이머 스타트
         LevelTimeSet();
         //퀘스트 설정 스타트
@@ -91,11 +93,18 @@ public class LevelManager : Singleton<LevelManager>
     public void QuestsComplete(){
         
         for(int i =0; i<questNum;i++){
-            if(questBox[i].check.activeSelf == true){
-                Debug.Log("Quest Complete!");
-                levelMap[levelNum -1].LevelDone();
 
+            if(questBox[i].check.activeSelf == true){
+                barnBC.barnTimer.timerOn = false;
+                DestroyAnimals();
+
+                b_messageText.LevelComplete();
+                levelMap[levelNum -1].LevelDone();
+                
+                //level 수를 하나 올려주고 해당 레벨맵의 색을 CurrentMaterial로 변경.
                 levelNum += 1;
+                levelMap[levelNum - 1].CurLevel();
+
 
             }
 
@@ -103,8 +112,26 @@ public class LevelManager : Singleton<LevelManager>
 
     }
 
-    public void QuestText(){
-        
+    public void DestroyAnimals(){
+        GameObject[] animals = GameObject.FindGameObjectsWithTag("Animal");
+        int animalCount = AnimalSaleManager.Instance.henNum + AnimalSaleManager.Instance.pigNum + AnimalSaleManager.Instance.cowNum;
+        for(int i = 0; i < animalCount;i++){
+            Destroy(animals[i]);
+            AnimalSaleManager.Instance.henNum = 0;
+            AnimalSaleManager.Instance.pigNum = 0;
+            AnimalSaleManager.Instance.cowNum = 0;
+
+
+        }
+
+    }
+
+    public void ResetLevel(){
+        for(int i = 0; i < questNum;i++){
+            questBox[i].QuestReset();
+        }
+        BarnCountManager.Instance.ResetCounts();
+
     }
 
 
