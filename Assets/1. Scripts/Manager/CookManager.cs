@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CookManager : Singleton<CookManager>
 {
+
+    public Message messageText;
     public CropData curCropData;
     public MaterialData curMaterialData;
     //public ItemData itemData;
@@ -23,6 +25,7 @@ public class CookManager : Singleton<CookManager>
     public List<CropData> cropList = new List<CropData>();
     public List<MaterialData> matList = new List<MaterialData>();
     public List<CoalData> coalList = new List<CoalData>();
+    public int coalNum = 0;
 
     int cNum = 0;
     int mNum = 0;
@@ -57,6 +60,7 @@ public class CookManager : Singleton<CookManager>
 
         if(data.itemType == ItemData.ItemType.COAL){
             coalList.Add((CoalData)data);
+            coalNum += 1;
         }
         else{
 
@@ -69,14 +73,32 @@ public class CookManager : Singleton<CookManager>
 
 
     public void CropShow(){
-        curCropData = cropList[cNum];
-        curCropImage.sprite = cropList[cNum].icon;
+        if(cropList.Count != 0){
+            curCropData = cropList[cNum];
+            curCropImage.sprite = cropList[cNum].icon;
+        }
+        else{
+            curCropData = null;
+            curCropImage.sprite = nullImage;
+
+        }
+
+
+
 
     }
 
     public void MaterialShow(){
-        curMaterialData = matList[mNum];
-        curMatImage.sprite = matList[mNum].icon;
+        if(matList.Count != 0){
+            curMaterialData = matList[mNum];
+            curMatImage.sprite = matList[mNum].icon;
+        }
+        else{
+            curMaterialData = null;
+            curMatImage.sprite = nullImage;
+
+        }
+
 
     }
 
@@ -91,7 +113,6 @@ public class CookManager : Singleton<CookManager>
         }
         else{
             cNum = cropList.Count - 1;
-
         }
         CropShow();
 
@@ -100,7 +121,6 @@ public class CookManager : Singleton<CookManager>
     public void NextCrop(){
         if(cNum < cropList.Count - 1){
             cNum += 1;
-
         }
         else{
             cNum = 0;
@@ -114,14 +134,12 @@ public class CookManager : Singleton<CookManager>
         }
         else{
             mNum = matList.Count - 1;
-
         }   
         MaterialShow();     
     }
     public void NextMat(){
         if(mNum < matList.Count - 1){
             mNum += 1;
-
         }
         else{
             mNum = 0;
@@ -133,8 +151,14 @@ public class CookManager : Singleton<CookManager>
 
 //Cook 버튼을 눌렀을 때 Coal이 하나 차감되며 요리가 완성됨
     public void Cook(){
-        if(coalList.Count == 0){
-            Debug.Log("No Coal to Cook!");
+
+       if(cropList.Count == 0 || matList.Count == 0){
+        messageText.NotEnoughIngredients();
+        }
+        
+
+        if(coalNum == 0){
+            messageText.NoCoal();
         }
         else{
 
@@ -145,7 +169,7 @@ public class CookManager : Singleton<CookManager>
             }
 
             if(combinedName.Contains("Flour")){
-                curFoodData = foodDatas[1];
+                curFoodData = foodDatas[3];
 
             }
 
@@ -156,6 +180,10 @@ public class CookManager : Singleton<CookManager>
             FoodShow();
 
             //요리 연성
+            coalNum -= 1;
+            StorageManager.Instance.RemoveNum(coalList[0]);
+            coalList.Remove(coalList[0]);
+            RemoveCurData();
 
             //요리 인벤토리에 넣어주기
             if(StorageManager.Instance.AddNum(curFoodData) == false){
@@ -168,23 +196,37 @@ public class CookManager : Singleton<CookManager>
 
             //사용된 아이템 각각 제거
         }
-
-
-
-
-
     }
 
     public void RemoveCurData(){
         if(curFoodData != null){
-            coalList.Remove(coalList[0]);
+            StorageManager.Instance.RemoveNum(cropList[cNum]);
+            StorageManager.Instance.RemoveNum(matList[mNum]);
+         
             cropList.Remove(cropList[cNum]);
             matList.Remove(matList[mNum]);
-            curFoodImage.sprite = nullImage;
+            StartCoroutine(ChangeImage());
+           
+
+        }
+        if(cropList.Count == 0 || matList.Count == 0){
 
         }
 
 
+    }
+
+    IEnumerator ChangeImage(){
+        yield return new WaitForSeconds(1f);
+        CropShow();
+        MaterialShow();
+        RemoveFoodImage();
+    }
+
+
+    public void RemoveFoodImage(){
+            curFoodData =null;
+            curFoodImage.sprite = nullImage;
     }
 
 }

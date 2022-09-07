@@ -53,4 +53,13 @@ public class BarnButtonChange : MonoBehaviour
     }
 
 
+
+    public void GoBackToMap(){
+        barnCam.SetActive(false);
+        barnCanvas.SetActive(false);
+        mapCanvas.SetActive(true);
+        mapCam.SetActive(true);
+    }
+
+
 }

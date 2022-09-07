@@ -98,6 +98,7 @@ public class LevelManager : Singleton<LevelManager>
         
         barnBC.barnTimer.timerOn = false;
         DestroyAnimals();
+        DestroyProducts();
 
         b_messageText.LevelComplete();
         levelMap[levelNum -1].LevelDone();
@@ -105,6 +106,7 @@ public class LevelManager : Singleton<LevelManager>
         //level 수를 하나 올려주고 해당 레벨맵의 색을 CurrentMaterial로 변경.
         levelNum += 1;
         levelMap[levelNum - 1].CurLevel();
+        StartCoroutine(GoToMap());
 
 
     }
@@ -125,7 +127,9 @@ public class LevelManager : Singleton<LevelManager>
 
     public void DestroyProducts(){
         GameObject[] products = GameObject.FindGameObjectsWithTag("Product");
-        
+        for(int i = 0; i<products.Length;i++){
+            Destroy(products[i]);
+        }
 
     }
 
@@ -138,6 +142,13 @@ public class LevelManager : Singleton<LevelManager>
             questBox[i].QuestReset();
         }
         BarnCountManager.Instance.ResetCounts();
+
+    }
+
+
+    IEnumerator GoToMap(){
+        yield return new WaitForSeconds(3f);
+        barnBC.GoBackToMap();
 
     }
 

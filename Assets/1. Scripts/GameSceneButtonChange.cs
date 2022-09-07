@@ -63,7 +63,7 @@ public class GameSceneButtonChange : MonoBehaviour
     }
 
     public void KitchenCloseButton(){
-        CookManager.Instance.RemoveCurData();
+        //CookManager.Instance.RemoveCurData();
         KitchenUI.SetActive(false);
     }
 

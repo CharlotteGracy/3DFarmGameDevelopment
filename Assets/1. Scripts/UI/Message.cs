@@ -70,10 +70,21 @@ public class Message : MonoBehaviour
     }
 
     public void LevelComplete(){
-       mText.enabled = true;
+        mText.enabled = true;
         notice.text = "Quests Complete!";
         StartCoroutine(MessagePop());
     }
+
+    public void NoCoal(){
+        mText.enabled = true;
+        notice.text = "No Coal To Cook!";
+        StartCoroutine(MessagePop());
+    }
+
+    public void NotEnoughIngredients(){
+        mText.enabled = true;
+        notice.text = "Not Enough Ingredients";
+        StartCoroutine(MessagePop());    }
 
 
     IEnumerator MessageTwinkle(){

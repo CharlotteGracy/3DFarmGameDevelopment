@@ -71,6 +71,8 @@ public class QuestBox : MonoBehaviour
 
       }
 
+  
+
 
 
       QuestDone();
