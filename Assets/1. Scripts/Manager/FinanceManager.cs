@@ -12,7 +12,7 @@ public class FinanceManager : Singleton<FinanceManager>
 
     public Text[] moneyTexts;
 
-    private int startMoney = 5000;
+    private int startMoney = 100;
 
     private int _money;
     public int curMoney{

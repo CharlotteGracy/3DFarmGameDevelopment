@@ -14,6 +14,7 @@ public class BarnTimer : MonoBehaviour
     public int min;
     public int sec;
     public bool timerOn;
+    public Message b_messageText;
 
     private void Start() {
 
@@ -55,6 +56,8 @@ public class BarnTimer : MonoBehaviour
 
         if(totalSec < 0){
             totalSec = 0;
+            timerOn = false;
+            TimerOver();
         }
 
     }
@@ -63,7 +66,12 @@ public class BarnTimer : MonoBehaviour
         totalSec = goalSec;
     }
 
-    public void GameOver(){
+    public void TimerOver(){
+        LevelManager.Instance.DestroyAnimals();
+        LevelManager.Instance.DestroyProducts();
+        b_messageText.TimerOver();
+        StartCoroutine(LevelManager.Instance.GoToMap());
+
 
     }
 }

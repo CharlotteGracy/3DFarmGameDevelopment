@@ -202,7 +202,8 @@ public class GameSceneButtonChange : MonoBehaviour
     public void BarnOn(){
         barnCamera.SetActive(true);
         playerCamera.SetActive(false);
-
+        mapCamera.SetActive(false);
+        mapCanvas.SetActive(false);
         gameCanvas.SetActive(false);
         barnCanvas.SetActive(true);
         LevelManager.Instance.GameStart();

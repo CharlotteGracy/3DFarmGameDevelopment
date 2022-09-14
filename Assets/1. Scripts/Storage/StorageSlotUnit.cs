@@ -43,7 +43,21 @@ public class StorageSlotUnit : MonoBehaviour {
 
     public void SellItem(){
         FinanceManager.Instance.curMoney = FinanceManager.Instance.curMoney + curData.sellingPrice;
+        if(StorageManager.Instance.itemList[index].itemType == ItemData.ItemType.CROP){
+            CookManager.Instance.cropList.Remove((CropData)StorageManager.Instance.itemList[index]);
+
+        }
+        else if(StorageManager.Instance.itemList[index].itemType == ItemData.ItemType.MATERIAL){
+            CookManager.Instance.matList.Remove((MaterialData)StorageManager.Instance.itemList[index]);
+
+        }
+        else if(StorageManager.Instance.itemList[index].itemType == ItemData.ItemType.COAL){
+            CookManager.Instance.coalList.Remove((CoalData)StorageManager.Instance.itemList[index]);
+            CookManager.Instance.coalNum -= 1;
+
+        }
         StorageManager.Instance.RemoveNum(StorageManager.Instance.itemList[index]);
+
         SellUI.SetActive(false);
     }
 

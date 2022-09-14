@@ -111,6 +111,7 @@ public class LevelManager : Singleton<LevelManager>
 
     }
 
+
     public void DestroyAnimals(){
         GameObject[] animals = GameObject.FindGameObjectsWithTag("Animal");
         int animalCount = AnimalSaleManager.Instance.henNum + AnimalSaleManager.Instance.pigNum + AnimalSaleManager.Instance.cowNum;
@@ -146,7 +147,7 @@ public class LevelManager : Singleton<LevelManager>
     }
 
 
-    IEnumerator GoToMap(){
+    public IEnumerator GoToMap(){
         yield return new WaitForSeconds(3f);
         barnBC.GoBackToMap();
 

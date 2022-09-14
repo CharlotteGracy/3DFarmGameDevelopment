@@ -27,8 +27,8 @@ public class CookManager : Singleton<CookManager>
     public List<CoalData> coalList = new List<CoalData>();
     public int coalNum = 0;
 
-    int cNum = 0;
-    int mNum = 0;
+    [SerializeField] int cNum = 0;
+    [SerializeField] int mNum = 0;
     private void Awake() {
         _instance = this;
     }
@@ -103,7 +103,10 @@ public class CookManager : Singleton<CookManager>
     }
 
     public void FoodShow(){
-        curFoodImage.sprite = curFoodData.icon;
+        if(curFoodData != null){
+            curFoodImage.sprite = curFoodData.icon;
+
+        }
     }
 
     //버튼 조작
@@ -155,43 +158,50 @@ public class CookManager : Singleton<CookManager>
        if(cropList.Count == 0 || matList.Count == 0){
         messageText.NotEnoughIngredients();
         }
-        
-
-        if(coalNum == 0){
-            messageText.NoCoal();
-        }
         else{
 
-            combinedName = curCropData.name + curMaterialData.name;
-
-            if(combinedName.Contains("Oil")){
-                curFoodData = foodDatas[0];
-            }
-
-            if(combinedName.Contains("Flour")){
-                curFoodData = foodDatas[3];
-
-            }
-
-            if(combinedName.Contains("Sauce")){
-                curFoodData = foodDatas[2];
-
-            }
-            FoodShow();
-
-            //요리 연성
-            coalNum -= 1;
-            StorageManager.Instance.RemoveNum(coalList[0]);
-            coalList.Remove(coalList[0]);
-            RemoveCurData();
-
-            //요리 인벤토리에 넣어주기
-            if(StorageManager.Instance.AddNum(curFoodData) == false){
-
+            if(coalNum == 0){
+                messageText.NoCoal();
             }
             else{
 
+                combinedName = curCropData.name + curMaterialData.name;
+
+                if(combinedName.Contains("Oil")){
+                    curFoodData = foodDatas[0];
+                }
+
+                if(combinedName.Contains("Flour")){
+                    curFoodData = foodDatas[3];
+
+                }
+
+                if(combinedName.Contains("Sauce")){
+                    curFoodData = foodDatas[2];
+
+                }
+
+
+
+                FoodShow();
+
+                //요리 연성
+                coalNum -= 1;
+                StorageManager.Instance.RemoveNum(coalList[0]);
+                coalList.Remove(coalList[0]);
+                RemoveCurData();
+
+                //요리 인벤토리에 넣어주기
+                if(StorageManager.Instance.AddNum(curFoodData) == false){
+
+                }
+                else{
+
+                }
+
             }
+            
+
 
 
             //사용된 아이템 각각 제거
@@ -205,6 +215,19 @@ public class CookManager : Singleton<CookManager>
          
             cropList.Remove(cropList[cNum]);
             matList.Remove(matList[mNum]);
+            if(cNum == 0){
+
+            }
+            else{
+                cNum -= 1;
+            }
+            if(mNum == 0){
+                
+
+            }
+            else{
+                mNum -= 1;
+            }
             StartCoroutine(ChangeImage());
            
 
